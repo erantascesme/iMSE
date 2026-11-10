@@ -1,0 +1,417 @@
+Dataset,Comparator,Scope,Metric,Mean_LMSE_improvement_pp,LMSE_wins,Ties,LMSE_losses,Backbones,Interpretation
+CIFAR10,Local-residual / natural,All,AUROC,0.2016355977386723,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / natural,All,FPR95,0.7158436213991783,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / natural,Far,AUROC,0.1036085058853425,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / natural,Far,FPR95,0.51358024691358,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / natural,Near,AUROC,0.397689781445365,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / natural,Near,FPR95,1.1203703703703711,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / natural,far_mnist,AUROC,-0.175720776014117,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / natural,far_mnist,FPR95,-0.6703703703703697,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / natural,far_places365,AUROC,0.568638432437273,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / natural,far_places365,FPR95,1.8296296296296293,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / natural,far_svhn,AUROC,-0.0238651668981096,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / natural,far_svhn,FPR95,0.1987654320987666,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / natural,far_texture,AUROC,0.0453815340162909,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / natural,far_texture,FPR95,0.6962962962962974,2,1,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / natural,near_cifar100,AUROC,0.3793281207133058,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / natural,near_cifar100,FPR95,0.9037037037037038,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / natural,near_tin,AUROC,0.4160514421774526,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / natural,near_tin,FPR95,1.3370370370370397,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,All,AUROC,-0.1033520593192539,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,All,FPR95,-0.3115226337448562,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,Far,AUROC,-0.06184403767683,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,Far,FPR95,-0.2450617283950618,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,Near,AUROC,-0.1863681026041395,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,Near,FPR95,-0.4444444444444428,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,far_mnist,AUROC,0.0032698236331517,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,far_mnist,FPR95,0.0098765432098767,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,far_places365,AUROC,-0.1728322450404202,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,far_places365,FPR95,-0.5246913580246914,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,far_svhn,AUROC,-0.0302117242216629,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,far_svhn,FPR95,-0.1432098765432099,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,far_texture,AUROC,-0.0476020050783792,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,far_texture,FPR95,-0.3222222222222204,0,1,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,near_cifar100,AUROC,-0.1875725651577558,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,near_cifar100,FPR95,-0.4333333333333338,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,near_tin,AUROC,-0.1851636400505091,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Local-residual / trace-matched,near_tin,FPR95,-0.4555555555555563,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,All,AUROC,-0.254662372684398,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,All,FPR95,-0.7835390946502052,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,Far,AUROC,-0.1576948053615723,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,Far,FPR95,-0.560185185185185,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,Near,AUROC,-0.4485975073300305,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,Near,FPR95,-1.2302469135802474,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,far_mnist,AUROC,0.0506632098765417,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,far_mnist,FPR95,0.2592592592592589,2,1,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,far_places365,AUROC,-0.4834193619674399,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,far_places365,FPR95,-1.2592592592592575,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,far_svhn,AUROC,-0.0779781958766771,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,far_svhn,FPR95,-0.4185185185185167,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,far_texture,AUROC,-0.1200448734786855,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,far_texture,FPR95,-0.8222222222222216,0,1,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,near_cifar100,AUROC,-0.4304161865569398,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,near_cifar100,FPR95,-1.1358024691358046,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,near_tin,AUROC,-0.4667788281030833,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Matched-ID-only,near_tin,FPR95,-1.3246913580246922,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,All,AUROC,0.2417218712181892,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,All,FPR95,1.1181069958847765,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,Far,AUROC,0.1972566982671963,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,Far,FPR95,1.0422839506172847,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,Near,AUROC,0.3306522171202033,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,Near,FPR95,1.269753086419753,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,far_mnist,AUROC,0.3072414462081052,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,far_mnist,FPR95,1.592592592592594,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,far_places365,AUROC,-0.058202150628162,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,far_places365,FPR95,0.2456790123456797,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,far_svhn,AUROC,0.2194435433692329,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,far_svhn,FPR95,0.869135802469137,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,far_texture,AUROC,0.3205439541196095,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,far_texture,FPR95,1.4617283950617288,1,1,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,near_cifar100,AUROC,0.2956168038408672,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,near_cifar100,FPR95,1.2296296296296294,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,near_tin,AUROC,0.3656876303995536,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=0,near_tin,FPR95,1.309876543209877,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,All,AUROC,0.0194652432267522,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,All,FPR95,-0.0199588477366246,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,Far,AUROC,-0.0030415669170385,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,Far,FPR95,-0.1657407407407416,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,Near,AUROC,0.0644788635143716,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,Near,FPR95,0.2716049382716032,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,far_mnist,AUROC,-0.0060225220458581,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,far_mnist,FPR95,-0.0654320987654317,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,far_places365,AUROC,0.1410048425088585,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,far_places365,FPR95,0.471604938271603,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,far_svhn,AUROC,-0.1003394208078134,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,far_svhn,FPR95,-0.5827160493827153,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,far_texture,AUROC,-0.0468091673233364,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,far_texture,FPR95,-0.4864197530864172,0,1,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,near_cifar100,AUROC,0.0227579561042385,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,near_cifar100,FPR95,0.2851851851851832,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,near_tin,AUROC,0.106199770924519,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=1,near_tin,FPR95,0.2580246913580281,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,All,AUROC,0.3121254445085337,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,All,FPR95,1.2983539094650185,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,Far,AUROC,0.2938656423256371,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,Far,FPR95,1.3864197530864193,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,Near,AUROC,0.3486450488743552,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,Near,FPR95,1.1222222222222205,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,far_mnist,AUROC,0.3869239858906373,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,far_mnist,FPR95,1.8024691358024687,2,1,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,far_places365,AUROC,0.2881699666233383,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,far_places365,FPR95,1.1049382716049394,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,far_svhn,AUROC,0.2978907251853352,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,far_svhn,FPR95,1.5111111111111128,2,1,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,far_texture,AUROC,0.2024778916031853,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,far_texture,FPR95,1.1271604938271598,1,1,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,near_cifar100,AUROC,0.3123040466392221,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,near_cifar100,FPR95,1.2456790123456798,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,near_tin,AUROC,0.3849860511094884,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Random-orientation / seed=2,near_tin,FPR95,0.998765432098764,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,All,AUROC,-0.162939621480092,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,All,FPR95,-0.4765432098765438,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,Far,AUROC,-0.1013487048619197,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,Far,FPR95,-0.3666666666666678,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,Near,AUROC,-0.2861214547164128,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,Near,FPR95,-0.6962962962962981,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,far_mnist,AUROC,0.027391534391531,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,far_mnist,FPR95,0.143209876543211,2,1,0,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,far_places365,AUROC,-0.3079019361266025,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,far_places365,FPR95,-0.8518518518518482,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,far_svhn,AUROC,-0.0483462424214783,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,far_svhn,FPR95,-0.1975308641975296,1,1,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,far_texture,AUROC,-0.0765381752911338,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,far_texture,FPR95,-0.5604938271604922,0,1,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,near_cifar100,AUROC,-0.2771808641975373,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,near_cifar100,FPR95,-0.6271604938271634,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,near_tin,AUROC,-0.2950620452352694,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / natural,near_tin,FPR95,-0.7654320987654325,0,1,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,All,AUROC,-0.044283830112595,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,All,FPR95,-0.1434156378600826,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,Far,AUROC,-0.0267242750654569,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,Far,FPR95,-0.103703703703704,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,Near,AUROC,-0.0794029402068095,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,Near,FPR95,-0.2228395061728438,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,far_mnist,AUROC,0.0015872663139333,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,far_mnist,FPR95,-0.0037037037037036,0,2,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,far_places365,AUROC,-0.0781152275067142,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,far_places365,FPR95,-0.2345679012345657,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,far_svhn,AUROC,-0.0096839976628804,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,far_svhn,FPR95,-0.0222222222222209,0,2,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,far_texture,AUROC,-0.0206851414061901,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,far_texture,FPR95,-0.1543209876543206,1,1,1,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,near_cifar100,AUROC,-0.0799665294924617,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,near_cifar100,FPR95,-0.181481481481482,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,near_tin,AUROC,-0.0788393509211336,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR10,Tangent-limit / trace-matched,near_tin,FPR95,-0.2641975308641959,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,All,AUROC,0.0467863745505591,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,All,FPR95,0.0491769547325127,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,Far,AUROC,0.0791982537627404,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,Far,FPR95,-0.0166666666666669,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,Near,AUROC,-0.0180373838738129,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,Near,FPR95,0.1808641975308666,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,far_mnist,AUROC,0.0470539329805982,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,far_mnist,FPR95,-0.3148148148148095,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,far_places365,AUROC,0.0759893303621481,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,far_places365,FPR95,0.0962962962962924,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,far_svhn,AUROC,0.0635847048646762,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,far_svhn,FPR95,0.0679012345679008,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,far_texture,AUROC,0.1301650468435487,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,far_texture,FPR95,0.0839506172839537,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,near_cifar10,AUROC,-0.0162244444444468,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,near_cifar10,FPR95,0.2765432098765394,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,near_tin,AUROC,-0.0198503233031791,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / natural,near_tin,FPR95,0.0851851851851878,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,All,AUROC,0.0270671006197697,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,All,FPR95,0.1104938271604976,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,Far,AUROC,0.0541638621020486,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,Far,FPR95,0.0308641975308627,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,Near,AUROC,-0.0271264223448071,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,Near,FPR95,0.2697530864197575,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,far_mnist,AUROC,0.063864691358025,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,far_mnist,FPR95,-0.2049382716049332,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,far_places365,AUROC,0.0422015102282339,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,far_places365,FPR95,0.129629629629625,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,far_svhn,AUROC,0.0272445309476646,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,far_svhn,FPR95,0.092592592592591,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,far_texture,AUROC,0.0833447158742709,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,far_texture,FPR95,0.1061728395061728,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,near_cifar10,AUROC,-0.0050922222222216,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,near_cifar10,FPR95,0.4049382716049348,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,near_tin,AUROC,-0.0491606224673925,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Local-residual / trace-matched,near_tin,FPR95,0.1345679012345702,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,All,AUROC,0.0407005468338894,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,All,FPR95,0.2022633744856037,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,Far,AUROC,0.0955869030516254,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,Far,FPR95,0.1459876543209901,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,Near,AUROC,-0.0690721656016108,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,Near,FPR95,0.3148148148148208,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,far_mnist,AUROC,0.3278037213403877,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,far_mnist,FPR95,-0.0814814814814776,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,far_places365,AUROC,-0.016834544944776,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,far_places365,FPR95,0.2296296296296264,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,far_svhn,AUROC,0.0392153152435383,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,far_svhn,FPR95,0.4913580246913588,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,far_texture,AUROC,0.0321631205673706,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,far_texture,FPR95,-0.0555555555555544,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,near_cifar10,AUROC,-0.0373159259259333,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,near_cifar10,FPR95,0.4395061728395006,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,near_tin,AUROC,-0.1008284052772836,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Matched-ID-only,near_tin,FPR95,0.1901234567901267,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,All,AUROC,0.0504745249527284,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,All,FPR95,0.2209876543209941,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,Far,AUROC,0.1058293322450841,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,Far,FPR95,0.1962962962962962,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,Near,AUROC,-0.0602350896319829,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,Near,FPR95,0.270370370370373,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,far_mnist,AUROC,0.3627785361551995,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,far_mnist,FPR95,0.0172839506172834,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,far_places365,AUROC,-0.021825492129191,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,far_places365,FPR95,0.1925925925925836,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,far_svhn,AUROC,0.0589534627846433,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,far_svhn,FPR95,0.65432098765432,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,far_texture,AUROC,0.0234108221696942,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,far_texture,FPR95,-0.079012345679012,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,near_cifar10,AUROC,-0.0201398765432117,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,near_cifar10,FPR95,0.3938271604938244,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,near_tin,AUROC,-0.1003303027207446,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=0,near_tin,FPR95,0.1469135802469138,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,All,AUROC,0.0783230866921466,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,All,FPR95,0.2446502057613221,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,Far,AUROC,0.1466859981271066,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,Far,FPR95,0.1999999999999993,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,Near,AUROC,-0.058402736177797,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,Near,FPR95,0.3339506172839528,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,far_mnist,AUROC,0.4713314462081115,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,far_mnist,FPR95,0.0407407407407376,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,far_places365,AUROC,-0.0085644058571195,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,far_places365,FPR95,0.1802469135802405,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,far_svhn,AUROC,0.08028594436477,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,far_svhn,FPR95,0.5827160493827215,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,far_texture,AUROC,0.0436910077926787,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,far_texture,FPR95,-0.003703703703705,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,near_cifar10,AUROC,-0.0219817283950665,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,near_cifar10,FPR95,0.5185185185185155,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,near_tin,AUROC,-0.0948237439605369,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=1,near_tin,FPR95,0.1493827160493855,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,All,AUROC,0.0526521702428226,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,All,FPR95,0.1909465020576183,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,Far,AUROC,0.1108509553903284,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,Far,FPR95,0.1222222222222223,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,Near,AUROC,-0.0637454000522221,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,Near,FPR95,0.3283950617283953,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,far_mnist,AUROC,0.376532433862432,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,far_mnist,FPR95,-0.1061728395061697,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,far_places365,AUROC,-0.0183000665664394,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,far_places365,FPR95,0.2135802469135767,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,far_svhn,AUROC,0.051365745483243,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,far_svhn,FPR95,0.4456790123456778,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,far_texture,AUROC,0.0338057087820734,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,far_texture,FPR95,-0.0641975308641997,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,near_cifar10,AUROC,-0.0277454320987734,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,near_cifar10,FPR95,0.4777777777777767,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,near_tin,AUROC,-0.099745368005666,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Random-orientation / seed=2,near_tin,FPR95,0.1790123456790162,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,All,AUROC,-0.0144244265155938,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,All,FPR95,0.0329218106995933,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,Far,AUROC,0.0180922113368874,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,Far,FPR95,0.009259259259263,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,Near,AUROC,-0.079457702220561,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,Near,FPR95,0.0802469135802539,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,far_mnist,AUROC,0.0813576719576711,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,far_mnist,FPR95,-0.0740740740740738,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,far_places365,AUROC,-0.0193545651376988,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,far_places365,FPR95,0.0925925925925869,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,far_svhn,AUROC,-0.0031939322543195,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,far_svhn,FPR95,0.0975308641975356,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,far_texture,AUROC,0.0135596707818971,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,far_texture,FPR95,-0.0790123456790136,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,near_cifar10,AUROC,-0.0743429629629635,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,near_cifar10,FPR95,0.1370370370370359,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,near_tin,AUROC,-0.0845724414781538,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / natural,near_tin,FPR95,0.0234567901234582,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,All,AUROC,-0.0240033774065153,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,All,FPR95,-0.0522633744855921,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,Far,AUROC,-0.0185600109552694,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,Far,FPR95,-0.0438271604938312,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,Near,AUROC,-0.0348901103089929,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,Near,FPR95,-0.0691358024691333,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,far_mnist,AUROC,-0.0574205820105741,0,0,3,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,far_mnist,FPR95,-0.1024691358024654,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,far_places365,AUROC,-0.0035748477580786,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,far_places365,FPR95,0.0037037037037013,1,1,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,far_svhn,AUROC,-0.0196998281317538,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,far_svhn,FPR95,-0.087654320987653,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,far_texture,AUROC,0.0064552140793333,3,0,0,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,far_texture,FPR95,0.0111111111111158,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,near_cifar10,AUROC,-0.0454265432098897,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,near_cifar10,FPR95,-0.0839506172839499,1,0,2,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,near_tin,AUROC,-0.0243536774081197,2,0,1,3,Descriptive point estimates; not significance tests
+CIFAR100,Tangent-limit / trace-matched,near_tin,FPR95,-0.054320987654318,2,0,1,3,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / natural,All,AUROC,0.5523432320201866,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / natural,All,FPR95,1.4331111111111143,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / natural,Far,AUROC,0.3276928978337583,7,0,1,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / natural,Far,FPR95,1.4840740740740748,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / natural,NINCO,AUROC,0.7349813838332349,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / natural,NINCO,FPR95,2.006666666666668,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / natural,Near,AUROC,0.8893187332998398,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / natural,Near,FPR95,1.3566666666666647,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / natural,OpenImage_O,AUROC,0.214616232906927,7,0,1,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / natural,OpenImage_O,FPR95,0.4927777777777773,5,0,3,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / natural,SSB_Hard,AUROC,1.0436560827664376,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / natural,SSB_Hard,FPR95,0.7066666666666661,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / natural,Textures,AUROC,0.1300507105943218,5,0,3,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / natural,Textures,FPR95,1.4991666666666692,6,0,2,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / natural,iNaturalist,AUROC,0.6384117499999977,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / natural,iNaturalist,FPR95,2.460277777777777,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / trace-matched,All,AUROC,0.5652165833460643,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / trace-matched,All,FPR95,1.492000000000001,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / trace-matched,Far,AUROC,0.3403764110530964,7,0,1,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / trace-matched,Far,FPR95,1.545185185185186,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / trace-matched,NINCO,AUROC,0.7549816200790058,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / trace-matched,NINCO,FPR95,2.141666666666665,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / trace-matched,Near,AUROC,0.902476841785532,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / trace-matched,Near,FPR95,1.4122222222222174,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / trace-matched,OpenImage_O,AUROC,0.2253878281205175,7,0,1,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / trace-matched,OpenImage_O,FPR95,0.555277777777778,5,0,3,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / trace-matched,SSB_Hard,AUROC,1.04997206349206,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / trace-matched,SSB_Hard,FPR95,0.6827777777777726,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / trace-matched,Textures,AUROC,0.149745155038758,5,0,3,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / trace-matched,Textures,FPR95,1.5658333333333343,7,0,1,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / trace-matched,iNaturalist,AUROC,0.645996249999989,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Local-residual / trace-matched,iNaturalist,FPR95,2.514444444444445,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Matched-ID-only,All,AUROC,0.4807146433194447,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Matched-ID-only,All,FPR95,1.3521111111111137,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Matched-ID-only,Far,AUROC,0.3996801854398022,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Matched-ID-only,Far,FPR95,1.5292592592592598,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Matched-ID-only,NINCO,AUROC,0.5496202112982225,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Matched-ID-only,NINCO,FPR95,1.5902777777777757,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Matched-ID-only,Near,AUROC,0.6022663301389084,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Matched-ID-only,Near,FPR95,1.0863888888888855,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Matched-ID-only,OpenImage_O,AUROC,0.2555601067069997,7,0,1,8,Descriptive point estimates; not significance tests
+ImageNet1K,Matched-ID-only,OpenImage_O,FPR95,0.5963888888888893,6,0,2,8,Descriptive point estimates; not significance tests
+ImageNet1K,Matched-ID-only,SSB_Hard,AUROC,0.6549124489795872,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Matched-ID-only,SSB_Hard,FPR95,0.5824999999999969,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Matched-ID-only,Textures,AUROC,0.3191803940568469,7,0,1,8,Descriptive point estimates; not significance tests
+ImageNet1K,Matched-ID-only,Textures,FPR95,1.3733333333333353,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Matched-ID-only,iNaturalist,AUROC,0.6243000555555458,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Matched-ID-only,iNaturalist,FPR95,2.618055555555556,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=0,All,AUROC,0.4852103761503166,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=0,All,FPR95,1.334500000000002,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=0,Far,AUROC,0.4021166635077211,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=0,Far,FPR95,1.506296296296299,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=0,NINCO,AUROC,0.5513478766230069,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=0,NINCO,FPR95,1.5811111111111114,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=0,Near,AUROC,0.6098509451142249,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=0,Near,FPR95,1.076805555555553,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=0,OpenImage_O,AUROC,0.2604483234258321,7,0,1,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=0,OpenImage_O,FPR95,0.5844444444444463,6,0,2,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=0,SSB_Hard,AUROC,0.6683540136054447,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=0,SSB_Hard,FPR95,0.5724999999999962,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=0,Textures,AUROC,0.32150172265289,7,0,1,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=0,Textures,FPR95,1.3297222222222236,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=0,iNaturalist,AUROC,0.6243999444444359,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=0,iNaturalist,FPR95,2.604722222222221,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=1,All,AUROC,0.4823432469737945,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=1,All,FPR95,1.354611111111112,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=1,Far,AUROC,0.402858863571641,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=1,Far,FPR95,1.541574074074075,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=1,NINCO,AUROC,0.5515076260134943,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=1,NINCO,FPR95,1.579999999999997,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=1,Near,AUROC,0.6015698220770371,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=1,Near,FPR95,1.074166666666665,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=1,OpenImage_O,AUROC,0.2565548133677922,7,0,1,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=1,OpenImage_O,FPR95,0.6233333333333333,6,0,2,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=1,SSB_Hard,AUROC,0.6516320181405817,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=1,SSB_Hard,FPR95,0.5683333333333334,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=1,Textures,AUROC,0.3273941106804585,7,0,1,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=1,Textures,FPR95,1.379166666666669,7,0,1,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=1,iNaturalist,AUROC,0.6246276666666599,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=1,iNaturalist,FPR95,2.6222222222222227,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=2,All,AUROC,0.4833596444113972,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=2,All,FPR95,1.343222222222226,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=2,Far,AUROC,0.4025690973924174,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=2,Far,FPR95,1.5349074074074078,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=2,NINCO,AUROC,0.5514788040294096,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=2,NINCO,FPR95,1.5105555555555568,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=2,Near,AUROC,0.6045454649398767,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=2,Near,FPR95,1.0556944444444412,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=2,OpenImage_O,AUROC,0.2580277760273315,7,0,1,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=2,OpenImage_O,FPR95,0.6113888888888876,6,0,2,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=2,SSB_Hard,AUROC,0.6576121258503402,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=2,SSB_Hard,FPR95,0.6008333333333287,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=2,Textures,AUROC,0.3241687661498815,7,0,1,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=2,Textures,FPR95,1.355000000000003,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=2,iNaturalist,AUROC,0.6255107499999895,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Random-orientation / seed=2,iNaturalist,FPR95,2.638333333333333,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / natural,All,AUROC,0.2088705937403645,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / natural,All,FPR95,0.6448333333333389,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / natural,Far,AUROC,0.1644702918097618,7,0,1,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / natural,Far,FPR95,0.7170370370370407,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / natural,NINCO,AUROC,0.2389195535899944,6,0,2,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / natural,NINCO,FPR95,0.8344444444444457,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / natural,Near,AUROC,0.275471046636266,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / natural,Near,FPR95,0.5365277777777786,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / natural,OpenImage_O,AUROC,0.0896951428711485,6,0,2,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / natural,OpenImage_O,FPR95,0.1875000000000013,5,1,2,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / natural,SSB_Hard,AUROC,0.3120225396825358,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / natural,SSB_Hard,FPR95,0.2386111111111128,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / natural,Textures,AUROC,0.1394510658914765,5,0,3,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / natural,Textures,FPR95,0.7836111111111133,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / natural,iNaturalist,AUROC,0.264264666666655,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / natural,iNaturalist,FPR95,1.18,8,0,0,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / trace-matched,All,AUROC,0.027996753189404,6,0,2,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / trace-matched,All,FPR95,0.0875000000000003,5,1,2,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / trace-matched,Far,AUROC,0.0211988378583427,6,0,2,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / trace-matched,Far,FPR95,0.1103703703703711,6,0,2,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / trace-matched,NINCO,AUROC,0.0246883918277927,6,0,2,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / trace-matched,NINCO,FPR95,0.1408333333333313,6,0,2,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / trace-matched,Near,AUROC,0.0381936261860058,6,0,2,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / trace-matched,Near,FPR95,0.0531944444444407,5,0,3,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / trace-matched,OpenImage_O,AUROC,0.0001697054354785,6,0,2,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / trace-matched,OpenImage_O,FPR95,-0.0233333333333316,5,0,3,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / trace-matched,SSB_Hard,AUROC,0.0516988605442154,6,0,2,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / trace-matched,SSB_Hard,FPR95,-0.034444444444448,4,0,4,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / trace-matched,Textures,AUROC,0.0294756136951033,5,0,3,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / trace-matched,Textures,FPR95,0.2902777777777783,7,0,1,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / trace-matched,iNaturalist,AUROC,0.0339511944444304,7,0,1,8,Descriptive point estimates; not significance tests
+ImageNet1K,Tangent-limit / trace-matched,iNaturalist,FPR95,0.0641666666666661,5,0,3,8,Descriptive point estimates; not significance tests

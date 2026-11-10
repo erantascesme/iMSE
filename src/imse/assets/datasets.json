@@ -1,0 +1,265 @@
+{
+  "CIFAR10": {
+    "classes": 10,
+    "archives": {
+      "cifar10": {
+        "google_drive_id": "1Co32RiiWe16lTaiOU6JMMnyUYS41IlO1",
+        "sha256": "5d3c480cd13e8791af7429fde3884f6ac45a7191c17fc1414eec550ed2e6582c",
+        "bytes": 142903414
+      },
+      "cifar100": {
+        "google_drive_id": "1PGKheHUsf29leJPPGuXqzLBMwl8qMF8_",
+        "sha256": "db6301142ca4119cb104a194e31a8f1190a1873759c3aa409b04c7899e9868f8",
+        "bytes": 141321419
+      },
+      "mnist": {
+        "google_drive_id": "1CCHAGWqA1KJTFFswuF9cbhmB-j98Y1Sb",
+        "sha256": "47e04388bccdcb0c5bb416e98720382129156c13f56dadeb97935f4a012cd0f9",
+        "bytes": 47228895
+      },
+      "places365": {
+        "google_drive_id": "1Ec-LRSTf6u5vEctKX9vRp9OA6tqnJ0Ay",
+        "sha256": "76639b253baca242da1b2746b56983c364e999d0eb63c4b901d8473f23b2e7ab",
+        "bytes": 496937997
+      },
+      "svhn": {
+        "google_drive_id": "1DQfc11HOtB1nEwqS4pWUFp8vtQ3DczvI",
+        "sha256": "56fdae7a5409712bcf10ce460c3e1f30550e73c89b70b9544bf136a84c61c0ae",
+        "bytes": 18989682
+      },
+      "texture": {
+        "google_drive_id": "1OSz1m3hHfVWbRdmMwKbUzoU8Hg9UKcam",
+        "sha256": "801fd2026c281090e6f42a5bddbc7ab55d8d03e79ee4bcc22d61bdef59862926",
+        "bytes": 625703847
+      },
+      "tin": {
+        "google_drive_id": "1PZ-ixyx52U989IKsMA2OT-24fToTrelC",
+        "sha256": "e95af0741e02afeb62c58cac3b5ac53ada99bee67bde65b061a423e2e40deb9d",
+        "bytes": 237497520
+      }
+    },
+    "splits": {
+      "far_mnist": {
+        "count": 70000,
+        "asset": "mnist",
+        "file": "CIFAR10_far_mnist.txt.gz",
+        "sha256": "48f8055d7327cbe91bff3ab6b43f9b623c3983355c55c246207907841c2ccb92"
+      },
+      "far_places365": {
+        "count": 35195,
+        "asset": "places365",
+        "file": "CIFAR10_far_places365.txt.gz",
+        "sha256": "fa127faa5c1bbc5b567e1cd2871b04b570f045d1676550f441ec5e7c91ab6cc7"
+      },
+      "far_svhn": {
+        "count": 26032,
+        "asset": "svhn",
+        "file": "CIFAR10_far_svhn.txt.gz",
+        "sha256": "f0cb7b825a985af2a6bf803cf51d7ca004e24ee8d8051eb6805bf77c77621c1e"
+      },
+      "far_texture": {
+        "count": 5640,
+        "asset": "texture",
+        "file": "CIFAR10_far_texture.txt.gz",
+        "sha256": "644fcaec364ee1ee440ff5285e1581d162b957378bb240ac4b7fc26e4f2f48e4"
+      },
+      "id_test": {
+        "count": 9000,
+        "asset": "cifar10",
+        "file": "CIFAR10_id_test.txt.gz",
+        "sha256": "84559ec5225425e7f7363058d5f9442ed21a39c7c66b63c3f1bb8b1ddb935e13"
+      },
+      "id_train": {
+        "count": 50000,
+        "asset": "cifar10",
+        "file": "CIFAR10_id_train.txt.gz",
+        "sha256": "9317e18980f1b11df74bba9d64223e57e69bd08c2943adbc75aec393a4976d1b"
+      },
+      "id_val": {
+        "count": 1000,
+        "asset": "cifar10",
+        "file": "CIFAR10_id_val.txt.gz",
+        "sha256": "6f64c4370bf3c61dab3308f7e8c5c94938b112b20d38cca77c1dfa0bcc5c1d89"
+      },
+      "near_cifar100": {
+        "count": 9000,
+        "asset": "cifar100",
+        "file": "CIFAR10_near_cifar100.txt.gz",
+        "sha256": "f907cb13024ba0fd13099954064df8f2f1ab8e3369c27b95ab44f3c5fc87ad16"
+      },
+      "near_tin": {
+        "count": 7793,
+        "asset": "tin",
+        "file": "CIFAR10_near_tin.txt.gz",
+        "sha256": "a44fd34e3c925d984063d2ad64969ff71e8fa6f5524fbe9da481c8b0c87b27cd"
+      },
+      "ood_val": {
+        "count": 1000,
+        "asset": "tin",
+        "file": "CIFAR10_ood_val.txt.gz",
+        "sha256": "39e22c5c6c2d95f95ab5ba43106f43ad7aa254ff62316104f406f7f10811f7c2"
+      }
+    }
+  },
+  "CIFAR100": {
+    "classes": 100,
+    "archives": {
+      "cifar10": {
+        "google_drive_id": "1Co32RiiWe16lTaiOU6JMMnyUYS41IlO1",
+        "sha256": "5d3c480cd13e8791af7429fde3884f6ac45a7191c17fc1414eec550ed2e6582c",
+        "bytes": 142903414
+      },
+      "cifar100": {
+        "google_drive_id": "1PGKheHUsf29leJPPGuXqzLBMwl8qMF8_",
+        "sha256": "db6301142ca4119cb104a194e31a8f1190a1873759c3aa409b04c7899e9868f8",
+        "bytes": 141321419
+      },
+      "mnist": {
+        "google_drive_id": "1CCHAGWqA1KJTFFswuF9cbhmB-j98Y1Sb",
+        "sha256": "47e04388bccdcb0c5bb416e98720382129156c13f56dadeb97935f4a012cd0f9",
+        "bytes": 47228895
+      },
+      "places365": {
+        "google_drive_id": "1Ec-LRSTf6u5vEctKX9vRp9OA6tqnJ0Ay",
+        "sha256": "76639b253baca242da1b2746b56983c364e999d0eb63c4b901d8473f23b2e7ab",
+        "bytes": 496937997
+      },
+      "svhn": {
+        "google_drive_id": "1DQfc11HOtB1nEwqS4pWUFp8vtQ3DczvI",
+        "sha256": "56fdae7a5409712bcf10ce460c3e1f30550e73c89b70b9544bf136a84c61c0ae",
+        "bytes": 18989682
+      },
+      "texture": {
+        "google_drive_id": "1OSz1m3hHfVWbRdmMwKbUzoU8Hg9UKcam",
+        "sha256": "801fd2026c281090e6f42a5bddbc7ab55d8d03e79ee4bcc22d61bdef59862926",
+        "bytes": 625703847
+      },
+      "tin": {
+        "google_drive_id": "1PZ-ixyx52U989IKsMA2OT-24fToTrelC",
+        "sha256": "e95af0741e02afeb62c58cac3b5ac53ada99bee67bde65b061a423e2e40deb9d",
+        "bytes": 237497520
+      }
+    },
+    "splits": {
+      "far_mnist": {
+        "count": 70000,
+        "asset": "mnist",
+        "file": "CIFAR100_far_mnist.txt.gz",
+        "sha256": "48f8055d7327cbe91bff3ab6b43f9b623c3983355c55c246207907841c2ccb92"
+      },
+      "far_places365": {
+        "count": 33773,
+        "asset": "places365",
+        "file": "CIFAR100_far_places365.txt.gz",
+        "sha256": "72d284ba55265c8e160a2dd668d6270305684c07adc8ab1e5fb7f400d3647705"
+      },
+      "far_svhn": {
+        "count": 26032,
+        "asset": "svhn",
+        "file": "CIFAR100_far_svhn.txt.gz",
+        "sha256": "f0cb7b825a985af2a6bf803cf51d7ca004e24ee8d8051eb6805bf77c77621c1e"
+      },
+      "far_texture": {
+        "count": 5640,
+        "asset": "texture",
+        "file": "CIFAR100_far_texture.txt.gz",
+        "sha256": "644fcaec364ee1ee440ff5285e1581d162b957378bb240ac4b7fc26e4f2f48e4"
+      },
+      "id_test": {
+        "count": 9000,
+        "asset": "cifar100",
+        "file": "CIFAR100_id_test.txt.gz",
+        "sha256": "b80ec93f98001ff121131204d7c1a21c04ace146cbbe7c3f60a1a2c6b239f18f"
+      },
+      "id_train": {
+        "count": 50000,
+        "asset": "cifar100",
+        "file": "CIFAR100_id_train.txt.gz",
+        "sha256": "50486e5eadbcfabc0f91d652c8c4ba4fd143e6d1b462df4daa7f3aef00b545a7"
+      },
+      "id_val": {
+        "count": 1000,
+        "asset": "cifar100",
+        "file": "CIFAR100_id_val.txt.gz",
+        "sha256": "c3c7a4fdade23a3e61a0d7c938db0165a36eea26dfc89b32b1f5762ccd40350d"
+      },
+      "near_cifar10": {
+        "count": 10000,
+        "asset": "cifar10",
+        "file": "CIFAR100_near_cifar10.txt.gz",
+        "sha256": "352dd98e85f2960921339ae8a9ef3c3cc5b7a165e2dab896650d7a822d5b591c"
+      },
+      "near_tin": {
+        "count": 6526,
+        "asset": "tin",
+        "file": "CIFAR100_near_tin.txt.gz",
+        "sha256": "8a85ed2203195cb70a2ddab2a6622ed5d091c868717976eb20661b49f6a82b16"
+      },
+      "ood_val": {
+        "count": 972,
+        "asset": "tin",
+        "file": "CIFAR100_ood_val.txt.gz",
+        "sha256": "b9b77628910bb860f0145e1670347efd6bfa1c6ff8c3e574d8f4bc438b420a8a"
+      }
+    }
+  },
+  "ImageNet1K": {
+    "classes": 1000,
+    "splits": {
+      "id_train": {
+        "count": 1281167,
+        "asset": "train",
+        "file": "ImageNet1K_id_train.txt.gz",
+        "sha256": "4dc8755a6dfa748a82142303503b42624240b6ba552d8c26bec00bace8306842"
+      },
+      "id_val": {
+        "count": 5000,
+        "asset": "val",
+        "file": "ImageNet1K_id_val.txt.gz",
+        "sha256": "b352c357d25ca94aae787ff7a65aaee0a4c219ab4021481ce3ccc97b88904fea"
+      },
+      "id_test": {
+        "count": 45000,
+        "asset": "val",
+        "file": "ImageNet1K_id_test.txt.gz",
+        "sha256": "7e0e05f8aa8e312992bfe342d57b8513dd4e62b68fedb5a1c63b6bca662d047c"
+      },
+      "ood_val": {
+        "count": 1763,
+        "asset": "OpenImage_O",
+        "file": "ImageNet1K_ood_val.txt.gz",
+        "sha256": "3bb1227701775c3893fedd5268f61a17dbfc15e3ec70ea195e3cc827c6b741d1"
+      },
+      "NINCO": {
+        "count": 5879,
+        "asset": "NINCO",
+        "file": "ImageNet1K_NINCO.txt.gz",
+        "sha256": "28450babf7d8d7389b75989a3af15346be0d514f048eac3711694045fdf40dd8"
+      },
+      "SSB_Hard": {
+        "count": 49000,
+        "asset": "SSB_Hard",
+        "file": "ImageNet1K_SSB_Hard.txt.gz",
+        "sha256": "e2dc7ba6c1e2bd2179a06038598344d5d8716be3bbc9409c45b0c3de95431510"
+      },
+      "iNaturalist": {
+        "count": 10000,
+        "asset": "iNaturalist",
+        "file": "ImageNet1K_iNaturalist.txt.gz",
+        "sha256": "86a19665f968eecf17383bafa15dea3aeb53db96c305d08f026cdb6438376ecb"
+      },
+      "Textures": {
+        "count": 5160,
+        "asset": "Textures",
+        "file": "ImageNet1K_Textures.txt.gz",
+        "sha256": "9cf1ff7e97ce67ea61a8bb1ffc17bb845ae06e1d22bfebc74c3c0aa284a408c9"
+      },
+      "OpenImage_O": {
+        "count": 15869,
+        "asset": "OpenImage_O",
+        "file": "ImageNet1K_OpenImage_O.txt.gz",
+        "sha256": "cbfb3ab73257f2d1523e1358e3c55d9589844194447cbad737248835cceb2ffc"
+      }
+    }
+  }
+}
