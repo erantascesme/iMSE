@@ -20,8 +20,6 @@ def main():
     parser.add_argument("--output", type=Path, default=Path("work/results"))
     parser.add_argument("--reference", type=Path, default=Path("reference/checkpoints.csv"))
     parser.add_argument("--device", default="cuda")
-    parser.add_argument("--sensitivity", action="store_true")
-    parser.add_argument("--ablation", action="store_true")
     parser.add_argument("--require-paper-match", action="store_true",
                         help="Fail when any result differs at the paper's two-decimal precision")
     parser.add_argument("--legacy-root", type=Path, help="Root of the existing experiment feature caches")
@@ -56,8 +54,7 @@ def main():
         from .benchmark.evaluate import evaluate
 
         rows = pd.concat([evaluate(ds, model, run, args.features / ds / model / run,
-                                   args.output / ds / model / run, args.device, args.sensitivity,
-                                   args.ablation)
+                                   args.output / ds / model / run, args.device)
                           for ds, model, run in tasks], ignore_index=True)
     runs_table, pairs, avg = write_reports(rows, args.output)
     delta = compare(runs_table, ref)

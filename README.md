@@ -203,10 +203,9 @@ The [reproduction notebook](notebooks/Reproduce.ipynb) supports table replay, fr
 |---|---|
 | [datasets](src/imse/datasets) | OpenOOD splits, download and image decoding |
 | [backbones](src/imse/backbones) | Frozen checkpoints and feature extraction |
-| [detectors](src/imse/detectors) | iMSE and the 13 post-hoc baselines used in the paper |
+| [detectors](src/imse/detectors) | Detector modules by method, with the Mahalanobis variants grouped together |
 | [benchmark](src/imse/benchmark) | Validation, scoring, and metrics |
-| [analysis](src/imse/analysis) | Paired bootstrap |
-| [reference](reference) | Archived paper results |
+| [reference](reference) | Archived benchmark results |
 | [checks](checks) | Equation, score, and table reproduction checks |
 
 See the [protocol](docs/protocol.md) for datasets and checkpoint setup, and the [validation report](docs/validation.md) for tested scope. The package structure follows the separation of data, networks, and postprocessors in [OpenOOD](https://github.com/Jingkang50/OpenOOD). The [provenance notes](docs/provenance.md) identify the source experiments and baseline implementations.

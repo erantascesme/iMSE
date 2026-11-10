@@ -6,10 +6,9 @@ import pandas as pd
 import torch
 import torch.nn.functional as F
 from sklearn.metrics import roc_curve, auc
-from tqdm.auto import tqdm
 
-from ..detectors import activations as activation, imse as covariance, imagenet as large
-from ..detectors import cifar as small
+from ..detectors import energy, fdbd, knn, logit_gap, mahalanobis, msp, nnguide, react, scale, vim
+from ..detectors import imse as covariance
 from ..common import atomic_json, hash_file, load_json, require
 from ..datasets import DATASETS, ood_groups
 from ..backbones.features import configure_precision, load_split
@@ -46,79 +45,47 @@ def _batches(x, device, batch):
         yield torch.from_numpy(x[start:start + batch]).to(device)
 
 
+def logit_scores(logits, gap_n=None):
+    values = torch.from_numpy(np.asarray(logits, dtype=np.float32))
+    parts = {"MSP": [], "Energy": [], "LogitGap": []}
+    batch_size = len(values) if gap_n is None else 4096
+    for batch in values.split(batch_size):
+        parts["MSP"].append(msp.score(batch).numpy())
+        parts["Energy"].append(energy.score(batch).numpy())
+        parts["LogitGap"].append(logit_gap.score(batch, gap_n).numpy())
+    return {name: np.concatenate(arrays) for name, arrays in parts.items()}
+
+
 @torch.inference_mode()
-def fit_imse(x, labels, classes, device, settings=((16, 1.), ("all", 1.)), ablation=False):
+def fit_imse(x, labels, classes, device):
     x, order, offsets, whitener, means = covariance.fit_geometry(x, labels, device, classes)
-    results, controls = {}, {}
-    for k, tau in settings:
-        print(f"Fitting iMSE (k={k}, tau={tau:g})", flush=True)
-        shift = covariance.fit_shift(x, order, offsets, whitener, k, tau)
-        state = covariance.make_state(whitener, means, shift, k)
-        results[k, tau] = state
-        if (k, tau) == (16, 1.):
-            controls["Matched-ID-only"] = dict(transform=state["transform"], means=state["means"],
-                weights=torch.full_like(state["weights"], 2.), logdet=0.)
-            if ablation:
-                controls.update(ablation_states(x, order, offsets, whitener, means, shift, device))
-    return results, controls
-
-
-@torch.inference_mode()
-def ablation_states(x, order, offsets, w, means, anchor, device):
-    names = ("Local-residual", "Tangent-limit")
-    moments = {name: torch.zeros_like(anchor) for name in names}
-    for first, last in tqdm(zip(offsets, offsets[1:]), total=len(means), desc="Ablation moments"):
-        raw = x[order[first:last]].to(device=device, dtype=torch.float32)
-        q = F.normalize(raw, dim=1)
-        neighbors = covariance.local_neighbors(q)
-        local = torch.empty_like(q)
-        for start in range(0, len(q), 128):
-            local[start:start + 128] = q[neighbors[start:start + 128, :16]].mean(1)
-        residual = q - local
-        u = (residual / (residual.norm(dim=1, keepdim=True) + covariance.EPS)).double()
-        q = q.double()
-        norm = q.norm(dim=1, keepdim=True)
-        tangent = u / norm - q * (q * u).sum(1, keepdim=True) / norm.pow(3)
-        for name, shifts in zip(names, (residual.double(), tangent)):
-            moments[name] += covariance.scatter(shifts)
-    b0 = covariance.symmetric(w.T @ anchor @ w)
-    kappa, _ = covariance.spectrum(b0)
-    states = {}
-
-    def add(name, eigenvalues, basis):
-        transform = w @ basis
-        states[name] = dict(transform=transform, means=means @ transform,
-                            weights=eigenvalues / (1 + eigenvalues),
-                            logdet=float(torch.log1p(eigenvalues).sum()))
-
-    for name, matrix in moments.items():
-        b = covariance.symmetric(w.T @ (matrix / len(x)) @ w)
-        require(torch.trace(b) > 0 and torch.trace(b0) > 0, "Undefined trace matching")
-        k, q = covariance.spectrum(b)
-        add(f"{name} / natural", k, q)
-        add(f"{name} / trace-matched", k * (float(torch.trace(b0)) / float(torch.trace(b))), q)
-    for seed in (0, 1, 2):
-        q, r = np.linalg.qr(np.random.default_rng(seed).standard_normal(anchor.shape))
-        q *= np.where(np.diag(r) < 0., -1., 1.)[None, :]
-        add(f"Random-orientation / seed={seed}", kappa, torch.from_numpy(q).to(device))
-    return states
+    results = {}
+    for k in (16, "all"):
+        print(f"Fitting iMSE (k={k}, tau=1)", flush=True)
+        shift = covariance.fit_shift(x, order, offsets, whitener, k, 1.)
+        results[f"iMSE{k}"] = covariance.make_state(whitener, means, shift, k)
+    return results
 
 
 @torch.inference_mode()
 def fit_activations(train, id_val, ood_val, device):
     w, b = train["weight"], train["bias"]
     n, d = train["features"].shape
-    grids = activation.candidates(d)
+    grids = {
+        "ViM": [dim for dim in vim.DIMENSIONS if dim < d],
+        "ReAct": react.PERCENTILES,
+        "SCALE": scale.PERCENTILES,
+    }
     u = (-np.linalg.pinv(w) @ b).astype(np.float32)
     origin = torch.from_numpy(u).to(device)
     cov = torch.zeros(d, d, dtype=torch.float64, device=device)
     for x in _batches(train["features"], device, 4096):
         shift = (x - origin).double()
         cov.add_(shift.T @ shift)
-    state = activation.build_vim((cov / n).cpu().numpy(), u, device)
+    state = vim.build_vim((cov / n).cpu().numpy(), u, device)
     maxima = train["logits"].max(axis=1).astype(np.float64).mean()
     for dim in grids["ViM"]:
-        total = sum(float(activation.vim_residual(x, state, dim).sum())
+        total = sum(float(vim.vim_residual(x, state, dim).sum())
                     for x in _batches(train["features"], device, 4096))
         require(total > 0, "Invalid ViM residual mean")
         state["alpha"][str(dim)] = float(maxima) / (total / n)
@@ -129,11 +96,11 @@ def fit_activations(train, id_val, ood_val, device):
         parts = []
         for x in _batches(bank["features"], device, batch):
             if method == "ViM":
-                values = activation.vim(x, F.linear(x, *head), state, p)
+                values = vim.vim(x, F.linear(x, *head), state, p)
             elif method == "ReAct":
-                values = activation.react(x, *head, thresholds[p])
+                values = react.react(x, *head, thresholds[p])
             else:
-                values, _ = activation.scale(x, *head, p)
+                values, _ = scale.scale(x, *head, p)
             parts.append(values.cpu().numpy())
         return np.concatenate(parts)
 
@@ -144,7 +111,7 @@ def fit_activations(train, id_val, ood_val, device):
             try:
                 a, b = (predict(method, bank, p, 1024) for bank in (id_val, ood_val))
                 trials.append((p, metrics(a, b)["AUROC"]))
-            except activation.UndefinedScore:
+            except scale.UndefinedScore:
                 continue
         require(trials, f"No valid validation candidate for {method}")
         selected[method] = max(trials, key=lambda item: item[1])[0]
@@ -152,8 +119,7 @@ def fit_activations(train, id_val, ood_val, device):
 
 
 @torch.inference_mode()
-def evaluate(dataset, backbone, run, features, output, device, sensitivity=False, ablation=False,
-             verify_cohort=True):
+def evaluate(dataset, backbone, run, features, output, device, *, verify_cohort=True):
     configure_precision()
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
@@ -161,7 +127,7 @@ def evaluate(dataset, backbone, run, features, output, device, sensitivity=False
     task = (dataset, backbone, run) if verify_cohort else None
     package = Path(__file__).resolve().parents[1]
     binding = dict(dataset=dataset, model=backbone, run=run, device=str(device),
-                   torch=torch.__version__, sensitivity=sensitivity, ablation=ablation,
+                   torch=torch.__version__,
                    code={p.relative_to(package).as_posix(): hash_file(p) for p in package.rglob("*.py")},
                    features={s: hash_file(features / s / "complete.json")
                              for s in DATASETS[dataset]["splits"]})
@@ -174,56 +140,46 @@ def evaluate(dataset, backbone, run, features, output, device, sensitivity=False
     classes = l.shape[1]
     if dataset == "ImageNet1K":
         tx, ty, tl = map(torch.from_numpy, (x, y, l))
-        knn = large.ExactNeighbors(tx, device)
-        v_id, v_ood = (knn.score_many(torch.from_numpy(v["features"]), K_GRID) for v in (id_val, ood_val))
+        neighbors = knn.ExactNeighbors(tx, device)
+        v_id, v_ood = (neighbors.score_many(torch.from_numpy(v["features"]), K_GRID) for v in (id_val, ood_val))
         order = train.get("official_order", np.arange(len(tx)))
-        guide = large.NearestNeighborGuide(tx, tl, large.openood_nnguide_indices(order), device)
-        fdbd = large.FeatureDecisionBoundary(torch.from_numpy(w), tx, device)
-        gaussians = [large.MahalanobisFamilyDetector(classes, norm, device).fit(tx, ty)
+        guide = nnguide.NearestNeighborGuide(tx, tl, nnguide.openood_nnguide_indices(order), device)
+        boundary = fdbd.FeatureDecisionBoundary(torch.from_numpy(w), tx, device)
+        gaussians = [mahalanobis.MahalanobisFamilyDetector(classes, norm, device).fit(tx, ty)
                      for norm in (False, True)]
 
         def primary(bank, k):
             features, logits = map(torch.from_numpy, (bank["features"], bank["logits"]))
-            out = {m: large.score_logits(logits, m) for m in ("MSP", "Energy", "LogitGap")}
-            out["KNN"] = knn.score_many(features, (k, 1000))[k]
+            out = logit_scores(bank["logits"], gap_n=200)
+            out["KNN"] = neighbors.score_many(features, (k, 1000))[k]
             out["NNGuide"] = guide.score_many(features, logits, (100,))[100]
-            out["fDBD"] = fdbd.score(features, logits)
+            out["fDBD"] = boundary.score(features, logits)
             for g, suffix in zip(gaussians, ("", "++")):
                 _, out["Mahalanobis" + suffix], out["Relative-Mahalanobis" + suffix] = g.score_all(features)
             return out
     else:
-        knn = small.ExactKNN(x, device)
-        v_id, v_ood = (knn.reference_score(v["features"], K_GRID) for v in (id_val, ood_val))
-        guide = small.NNGuide(x, l, device)
-        fdbd = small.FDBD(x, w)
-        gaussians = [small.GaussianFamily(norm, device).fit(x, y) for norm in (False, True)]
+        neighbors = knn.ExactKNN(x, device)
+        v_id, v_ood = (neighbors.reference_score(v["features"], K_GRID) for v in (id_val, ood_val))
+        guide = nnguide.NNGuide(x, l, device)
+        boundary = fdbd.FDBD(x, w)
+        gaussians = [mahalanobis.GaussianFamily(norm, device).fit(x, y) for norm in (False, True)]
 
         def primary(bank, k):
             features, logits = bank["features"], bank["logits"]
-            out = small.logit_scores(logits)
+            out = logit_scores(logits)
             companion_k = 50 if dataset == "CIFAR10" else 200
-            out["KNN"] = knn.score(features, sorted({k, companion_k}))[k]
+            out["KNN"] = neighbors.score(features, sorted({k, companion_k}))[k]
             out["NNGuide"] = guide.score(features, logits, (10, 100))[100]
-            out["fDBD"] = fdbd.score(features, logits)
+            out["fDBD"] = boundary.score(features, logits)
             for g, suffix in zip(gaussians, ("", "++")):
                 out["Mahalanobis" + suffix], out["Relative-Mahalanobis" + suffix] = g.scores(features)
             return out
 
     selected_k = max(K_GRID, key=lambda k: metrics(v_id[k], v_ood[k])["AUROC"])
     selected, act_predict = fit_activations(train, id_val, ood_val, device)
-    settings = [(16, 1.), ("all", 1.)]
-    if sensitivity:
-        settings += [(k, 1.) for k in (4, 8, 32, 64, 128, 256, 512)]
-        settings += [(16, tau) for tau in (.1, .25, .5, 2., 4.)]
-    imse, controls = fit_imse(x, y, classes, device, settings, ablation)
-    states = {f"iMSE{k}" if tau == 1 else f"iMSE{k}-tau{tau:g}": state
-              for (k, tau), state in imse.items()}
-    states.update(controls)
+    states = fit_imse(x, y, classes, device)
     atomic_json(output / "selection.json", {"KNN": selected_k, **selected,
                                             "NNGuide_bank_size": len(guide.indices)})
-    random_control = None
-    if dataset == "CIFAR10" and backbone == "ResNet18":
-        random_control = small.NNGuide(x, l, device, random_bank=True)
     del id_val, ood_val
     gc.collect()
     score_files = {}
@@ -241,9 +197,6 @@ def evaluate(dataset, backbone, run, features, output, device, sensitivity=False
             for name, state in states.items():
                 parts[name].append(covariance.score(q, labels, state).cpu().numpy())
         scores.update({name: np.concatenate(values) for name, values in parts.items()})
-        if random_control is not None:
-            scores["NNGuide-IDRandom-K100"] = random_control.score(
-                bank["features"], bank["logits"], (10, 100))[100]
         path = output / f"{split}.npz"
         np.savez_compressed(path, **scores)
         score_files[split] = hash_file(path)
@@ -261,12 +214,11 @@ def summarize_scores(dataset, backbone, run, output, score_files):
         with np.load(path, allow_pickle=False) as bank:
             for detector in bank.files:
                 scores.setdefault(detector, {})[split] = bank[detector]
-    require(set(DETECTORS) <= scores.keys(), "Missing primary detector scores")
+    require(set(DETECTORS) == scores.keys(), "Unexpected primary detector scores")
     rows = []
     for detector, values in scores.items():
         rows.extend(score_table(dataset, backbone, run, detector, values))
     table = pd.DataFrame(rows)
-    table[table.Detector.isin(DETECTORS)].to_csv(output / "metrics.csv", index=False)
-    table[~table.Detector.isin(DETECTORS)].to_csv(output / "supplementary_metrics.csv", index=False)
+    table.to_csv(output / "metrics.csv", index=False)
     atomic_json(output / "scores.json", score_files)
-    return table[table.Detector.isin(DETECTORS)]
+    return table

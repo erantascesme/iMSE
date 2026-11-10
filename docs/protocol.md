@@ -24,7 +24,7 @@ Fit on the full ID training sets. Validation contains 5,000 ID and 1,763 OOD ima
 | SCALE | 65/70/75/80/85/90/95 percentile; Energy on scaled original activations |
 | iMSE | Cosine, k=16 or all other same-class samples, tau=1, one synthetic sample per parent, OAS ID covariance and pooled shift covariance |
 
-FPR95 is ID rejection at 95% OOD recall. Compute AUROC and FPR95 separately for each OOD dataset, average the datasets equally within Near/Far/All, then average checkpoints within a backbone before averaging backbones. All averages the individual OOD datasets. The original CIFAR-10 ResNet18 NNGuide bank covers one class. A random 600-row control at the same K is exported separately and does not replace the paper table.
+FPR95 is ID rejection at 95% OOD recall. Compute AUROC and FPR95 separately for each OOD dataset, average the datasets equally within Near/Far/All, then average checkpoints within a backbone before averaging backbones. All averages the individual OOD datasets. The original CIFAR-10 ResNet18 NNGuide bank covers one class.
 
 ## Fresh data and existing caches
 
