@@ -24,8 +24,12 @@ dependencies = [
   "tqdm>=4.66",
 ]
 
+[project.optional-dependencies]
+vim = ["ninja", "packaging", "einops", "transformers"]
+
 [tool.setuptools.packages.find]
-where = ["src"]
+include = ["imse_benchmark", "imse_benchmark.*"]
+namespaces = false
 
 [tool.setuptools.package-data]
-imse = ["assets/*.json", "assets/manifests/*.gz", "assets/upstream/*"]
+imse_benchmark = ["assets/*.json", "assets/manifests/*.gz", "assets/upstream/*"]

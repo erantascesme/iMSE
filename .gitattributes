@@ -3,4 +3,6 @@
 *.md text eol=lf
 *.ipynb text eol=lf
 *.toml text eol=lf
-src/imse/assets/** -text -whitespace
+imse_benchmark/assets/** -text -whitespace
+imse_benchmark/backbones/_densenet.py -text -whitespace
+imse_benchmark/backbones/_resnet18.py -text -whitespace

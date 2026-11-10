@@ -7,7 +7,7 @@ Inverse Mean-Shift Extrapolation with Covariance-Inflation Scoring for Post-Hoc 
 Extract the inputs to your frozen classifier head. Fit on raw ID training features and their true class labels, with labels indexed from 0 to C−1 in the same order as the classifier outputs. At inference, provide raw query features and their original logits. Higher scores indicate more ID-like samples.
 
 ```python
-from imse.detectors import IMSE
+from imse_benchmark.detectors import IMSE
 
 detector = IMSE(k=16, tau=1.0, device="cuda")
 detector.fit(train_features, train_labels)  # (N, D), (N,)
@@ -189,23 +189,37 @@ class IMSE:
 
 </details>
 
-## Reproduce the paper
+## Reproduce the benchmark
+
+Install in a Python 3.11–3.13 environment with PyTorch and torchvision builds that match your CUDA runtime.
 
 ```bash
 pip install -e .
-python -m imse replay --dataset CIFAR10 CIFAR100 ImageNet1K
-python -m imse all --dataset CIFAR10 --require-paper-match
+python -m imse_benchmark all --dataset CIFAR10
 ```
 
-The [reproduction notebook](notebooks/Reproduce.ipynb) supports table replay, fresh evaluation, and import of the original feature caches. `replay` rebuilds the tables from archived metrics. `all` downloads data, extracts features, and scores the full test populations.
+Use [Reproduce.ipynb](Reproduce.ipynb) from a local checkout or [open the Colab notebook](https://colab.research.google.com/github/erantascesme/iMSE/blob/main/Reproduce_Colab.ipynb). Both run the same code. Choose `CIFAR10`, `CIFAR100`, or `ImageNet1K`. Use `--backbone` to run a single paper backbone, or `--work-dir` to store data, checkpoints, feature caches, and results elsewhere.
 
-| Directory | Contents |
-|---|---|
-| [datasets](src/imse/datasets) | OpenOOD splits, download and image decoding |
-| [backbones](src/imse/backbones) | Frozen checkpoints and feature extraction |
-| [detectors](src/imse/detectors) | Detector modules by method, with the Mahalanobis variants grouped together |
-| [benchmark](src/imse/benchmark) | Validation, scoring, and metrics |
-| [reference](reference) | Archived benchmark results |
-| [checks](checks) | Equation, score, and table reproduction checks |
+Run `download`, `extract`, or `evaluate` to execute individual stages. The evaluator reuses completed feature caches and prints AUROC / FPR95 for All, Near, and Far. Results include checkpoint metrics, backbone averages, and dataset averages in `work/results/`. After a code update, use a fresh `--output` directory for evaluation and point `--features` at your existing feature cache.
 
-See the [protocol](docs/protocol.md) for datasets and checkpoint setup, and the [validation report](docs/validation.md) for tested scope. The package structure follows the separation of data, networks, and postprocessors in [OpenOOD](https://github.com/Jingkang50/OpenOOD). The [provenance notes](docs/provenance.md) identify the source experiments and baseline implementations.
+**Data and checkpoint access.** CIFAR data and OpenOOD ResNet18 checkpoints are downloaded from the OpenOOD releases. To download ImageNet-1K, accept the [dataset access terms](https://huggingface.co/datasets/ILSVRC/imagenet-1k) and run `hf auth login` or set a read token through `HF_TOKEN`. In Colab, add `HF_TOKEN` to Secrets. For local ImageNet data, use `work/data/imagenet/{train,val,NINCO,SSB_Hard,iNaturalist,Textures,OpenImage_O}` with the canonical archives or extracted images. Full ImageNet-1K requires substantial disk and compute. Use `pip install -e ".[vim]"` for Vim-Base, which builds the pinned extensions with a CUDA toolkit compatible with PyTorch.
+
+**Protocol.** Each detector uses the paper's frozen checkpoints and ordered data splits. KNN, ViM, ReAct, and SCALE select settings on validation AUROC. iMSE fits on ID training data with `k=16` or `k=all` and `tau=1`. The CIFAR NNGuide run uses the original ordered bank. AUROC and FPR95 are macro-averaged over OOD datasets, then averaged over checkpoints within each backbone. FPR95 measures ID rejection at 95% OOD recall.
+
+## Repository layout
+
+```
+README.md
+Reproduce.ipynb
+Reproduce_Colab.ipynb
+pyproject.toml
+imse_benchmark/
+├── config.py          # Detector settings and validation grids
+├── datasets/          # Downloads, image loading, and benchmark splits
+├── backbones/         # Checkpoints, architectures, preprocessing, and feature caches
+├── detectors/         # One module per detector family
+├── benchmark/         # Evaluation and metric tables
+└── assets/            # Split manifests, checkpoint locks, and license notices
+```
+
+The [checkpoint manifest](imse_benchmark/assets/checkpoints.json) records the architecture, weight source, revision or hash, and preprocessing for each backbone. Architectures use pinned [timm](https://github.com/huggingface/pytorch-image-models), the [official Vim source](https://github.com/hustvl/Vim), or bundled [OpenOOD](https://github.com/Jingkang50/OpenOOD) and [ODIN](https://github.com/facebookresearch/odin) implementations.

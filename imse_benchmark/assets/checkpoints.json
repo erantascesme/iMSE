@@ -1,0 +1,484 @@
+{
+  "CIFAR10/ResNet18": {
+    "archive_bytes": 374531537,
+    "archive_sha256": "c8e9d203ee9dd75ffa22a2b0d771341104b0ab366c4c4598578f4b5ae2fa071a",
+    "google_drive_id": "1byGeYxM_PlLjT72wZsMQvP6popJeWBgt",
+    "runs": {
+      "s0": {
+        "checkpoint_sha256": "dc96647a7f835dbbf72abaec74810009abd444a39376328abbc582b91a5ec3fd",
+        "member": "cifar10_resnet18_32x32_base_e100_lr0.1_default/s0/best.ckpt",
+        "seed": 0
+      },
+      "s1": {
+        "checkpoint_sha256": "d055735fd1b5b7033a8ace7378fd81444e37e71bdcad9638a0c25817cc6f30aa",
+        "member": "cifar10_resnet18_32x32_base_e100_lr0.1_default/s1/best.ckpt",
+        "seed": 1
+      },
+      "s2": {
+        "checkpoint_sha256": "2c2a41cff9cb5e7ba360397a1e6f989dfec46a83f0db5907ddbf02a49959a9e0",
+        "member": "cifar10_resnet18_32x32_base_e100_lr0.1_default/s2/best.ckpt",
+        "seed": 2
+      }
+    },
+    "filename": "cifar10_res18_v1.5.zip",
+    "architecture": "ResNet18_32x32",
+    "transform": {
+      "resize": 32,
+      "crop": 32,
+      "interpolation": "bilinear",
+      "mean": [
+        0.4914,
+        0.4822,
+        0.4465
+      ],
+      "std": [
+        0.247,
+        0.2435,
+        0.2616
+      ]
+    }
+  },
+  "CIFAR10/DenseNet-BC-100-ODIN": {
+    "url": "https://www.dropbox.com/s/wr4kjintq1tmorr/densenet10.pth.tar.gz?dl=1",
+    "filename": "densenet10.pth.tar.gz",
+    "bytes": 3023135,
+    "sha256": "b5dcb42b3bc725deb4aaeb574255ead1380ecbea3e3720d8b9e17181a82f353d",
+    "member": "densenet10.pth",
+    "member_sha256": "3211ffc3f6107d0605b5914d58fd352318b7af6464e99eb875b88e5c38fdcb31",
+    "source_commit": "64e97962ccaed1fe979f43a089c0feb4d8b002fd",
+    "architecture": "DenseNet3",
+    "architecture_kwargs": {
+      "depth": 100,
+      "growth_rate": 12,
+      "reduction": 0.5,
+      "bottleneck": true,
+      "dropRate": 0.0
+    },
+    "transform": {
+      "resize": 32,
+      "crop": 32,
+      "interpolation": "bilinear",
+      "mean": [
+        0.4913725490196078,
+        0.4823529411764706,
+        0.4466666666666667
+      ],
+      "std": [
+        0.24705882352941178,
+        0.24352941176470588,
+        0.2615686274509804
+      ]
+    }
+  },
+  "CIFAR10/ViT-B16-CIFAR10": {
+    "repo": "edadaltocg/vit_base_patch16_224_in21k_ft_cifar10",
+    "revision": "af39f3ca8ecb0cea36cd2f18259b19529c76494f",
+    "url": "https://huggingface.co/edadaltocg/vit_base_patch16_224_in21k_ft_cifar10/resolve/af39f3ca8ecb0cea36cd2f18259b19529c76494f/pytorch_model.bin",
+    "sha256": "49dd3a2c9b34ebfb248fee26e3a55d32faed95528c1240e913461289f2364c48",
+    "bytes": 343280173,
+    "filename": "vit_base_patch16_224_in21k_ft_cifar10.bin",
+    "architecture": "vit_base_patch16_224.orig_in21k_ft_in1k",
+    "transform": {
+      "resize": 248,
+      "crop": 224,
+      "interpolation": "bicubic",
+      "mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "std": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  },
+  "CIFAR100/ResNet18-OpenOOD": {
+    "archive_bytes": 375155100,
+    "archive_sha256": "9967390ee4f26d425b5c5eedecc8f0d28598648fc0aa2b8ba74cbdb6fb3665ca",
+    "filename": "cifar100_res18_v1.5.zip",
+    "google_drive_id": "1s-1oNrRtmA0pGefxXJOUVRYpaoAML0C-",
+    "runs": {
+      "s0": {
+        "checkpoint_sha256": "92dc13b95048ffa0b6e8f7c3528d2e67bdfed2ac491e192a89f19f7b1e895c9b",
+        "member": "cifar100_resnet18_32x32_base_e100_lr0.1_default/s0/best.ckpt",
+        "seed": 0
+      },
+      "s1": {
+        "checkpoint_sha256": "c9c88b3f3c24aa51c500db09bff36661dd6aa317c125f520fbd5792c56c606dd",
+        "member": "cifar100_resnet18_32x32_base_e100_lr0.1_default/s1/best.ckpt",
+        "seed": 1
+      },
+      "s2": {
+        "checkpoint_sha256": "9285b3226b4d3e358800151a58e9e9fd250c74384d552193b54cb607f01ffc98",
+        "member": "cifar100_resnet18_32x32_base_e100_lr0.1_default/s2/best.ckpt",
+        "seed": 2
+      }
+    },
+    "url": "https://drive.usercontent.google.com/download?export=download&confirm=t&id=1s-1oNrRtmA0pGefxXJOUVRYpaoAML0C-",
+    "architecture": "ResNet18_32x32",
+    "transform": {
+      "resize": 32,
+      "crop": 32,
+      "interpolation": "bilinear",
+      "mean": [
+        0.5071,
+        0.4867,
+        0.4408
+      ],
+      "std": [
+        0.2675,
+        0.2565,
+        0.2761
+      ]
+    }
+  },
+  "CIFAR100/ResNet34-CIFAR100": {
+    "bytes": 85452981,
+    "filename": "resnet34_cifar100.bin",
+    "repo": "edadaltocg/resnet34_cifar100",
+    "revision": "50cd2c2d5506e750dfbad7be7c80070515206137",
+    "sha256": "6c289529717391309146c2ba0b28e425cbb1f8586c8c93c40499405d8ee72f1e",
+    "url": "https://huggingface.co/edadaltocg/resnet34_cifar100/resolve/50cd2c2d5506e750dfbad7be7c80070515206137/pytorch_model.bin",
+    "architecture": "resnet34",
+    "transform": {
+      "resize": 32,
+      "crop": 32,
+      "interpolation": "bilinear",
+      "mean": [
+        0.5071,
+        0.4867,
+        0.4408
+      ],
+      "std": [
+        0.2675,
+        0.2565,
+        0.2761
+      ]
+    }
+  },
+  "CIFAR100/ViT-B16-CIFAR100": {
+    "bytes": 343557101,
+    "filename": "vit_base_patch16_224_in21k_ft_cifar100.bin",
+    "repo": "edadaltocg/vit_base_patch16_224_in21k_ft_cifar100",
+    "revision": "5cc7bb891962bc86be8a6a1c4d4235ab6b09e3b7",
+    "sha256": "fe7a0dbc8ece2d3717dffbfec370a433ad2fbf74d5dec9315481a15a66dfbfe2",
+    "url": "https://huggingface.co/edadaltocg/vit_base_patch16_224_in21k_ft_cifar100/resolve/5cc7bb891962bc86be8a6a1c4d4235ab6b09e3b7/pytorch_model.bin",
+    "architecture": "vit_base_patch16_224.orig_in21k_ft_in1k",
+    "transform": {
+      "resize": 248,
+      "crop": 224,
+      "interpolation": "bicubic",
+      "mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "std": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  },
+  "ImageNet1K/ConvNeXtV2-B": {
+    "feature_definition": "forward_head(forward_features(x), pre_logits=True)",
+    "feature_dim": 1024,
+    "head_bias_sha256": "fa9a231d7c26f89e5c314e6e94f08135063ca29caf21fa1313b19aac8fb15344",
+    "head_weight_sha256": "3f3950fcbd0aff89dc1b8c4eb70969b434ea9266170f15a9523031d50db5f4b2",
+    "model": "ConvNeXtV2-B",
+    "num_params": 88717800,
+    "source": {
+      "filename": "model.safetensors",
+      "repo": "timm/convnextv2_base.fcmae_ft_in1k",
+      "revision": "7b29800e499fdc06de5b612970f3384dc8d29ca5",
+      "sha256": "ec152f1e375edc2b3dfac7a81155a449b4c5cbb7c5cf0b9494838f6c87518d73",
+      "state_key": "state_dict"
+    },
+    "transform": {
+      "crop_pct": 1.0,
+      "description": "Compose(\n    Resize(size=288, interpolation=bicubic, max_size=None, antialias=True)\n    CenterCrop(size=(288, 288))\n    MaybeToTensor()\n    Normalize(mean=tensor([0.4850, 0.4560, 0.4060]), std=tensor([0.2290, 0.2240, 0.2250]))\n)",
+      "input_size": [
+        3,
+        288,
+        288
+      ],
+      "interpolation": "bicubic",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "architecture": "convnextv2_base.fcmae_ft_in1k"
+  },
+  "ImageNet1K/DeiT3-B16": {
+    "feature_definition": "forward_head(forward_features(x), pre_logits=True)",
+    "feature_dim": 768,
+    "head_bias_sha256": "b7a1a17de75b7b93bc038f0a2e622e3689341179fd33129c34cc24e7581957f4",
+    "head_weight_sha256": "69eea5b46cce114bf52533a6040d2069387afa2c3e275dbe1a28f6434e6d6364",
+    "model": "DeiT3-B16",
+    "num_params": 86585320,
+    "source": {
+      "filename": "model.safetensors",
+      "repo": "timm/deit3_base_patch16_224.fb_in1k",
+      "revision": "19c7b54db6681c96466eaa67507afba7cf8db449",
+      "sha256": "9a6f0f93c19c3f6b05836231b9de6b07cc9eca1b002b30c3b5b0b77411687650",
+      "state_key": "state_dict"
+    },
+    "transform": {
+      "crop_pct": 0.9,
+      "description": "Compose(\n    Resize(size=248, interpolation=bicubic, max_size=None, antialias=True)\n    CenterCrop(size=(224, 224))\n    MaybeToTensor()\n    Normalize(mean=tensor([0.4850, 0.4560, 0.4060]), std=tensor([0.2290, 0.2240, 0.2250]))\n)",
+      "input_size": [
+        3,
+        224,
+        224
+      ],
+      "interpolation": "bicubic",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "architecture": "deit3_base_patch16_224.fb_in1k"
+  },
+  "ImageNet1K/EffNetV2-S": {
+    "feature_definition": "forward_head(forward_features(x), pre_logits=True)",
+    "feature_dim": 1280,
+    "head_bias_sha256": "e24f4cd5222bd5688b3c6abc62e3194c7c5848617db451941bc81afe4dbb2fdd",
+    "head_weight_sha256": "44d1a791a987310df965ef0d0f219e8dab9db97ed4a96890797fd1f8fbcd7fad",
+    "model": "EffNetV2-S",
+    "num_params": 21458488,
+    "source": {
+      "filename": "model.safetensors",
+      "repo": "timm/tf_efficientnetv2_s.in1k",
+      "revision": "3af791b42d7e895c9da9b5aa4ed4e6b648e4ac0b",
+      "sha256": "b8a4b5462df66612e3c0e63781f73f7890ccdac8bcd950b4fc0ba0c0f29bda1f",
+      "state_key": "state_dict"
+    },
+    "transform": {
+      "crop_pct": 1.0,
+      "description": "Compose(\n    Resize(size=384, interpolation=bicubic, max_size=None, antialias=True)\n    CenterCrop(size=(384, 384))\n    MaybeToTensor()\n    Normalize(mean=tensor([0.5000, 0.5000, 0.5000]), std=tensor([0.5000, 0.5000, 0.5000]))\n)",
+      "input_size": [
+        3,
+        384,
+        384
+      ],
+      "interpolation": "bicubic",
+      "mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "std": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "architecture": "tf_efficientnetv2_s.in1k"
+  },
+  "ImageNet1K/RegNetY-16GF": {
+    "feature_definition": "forward_head(forward_features(x), pre_logits=True)",
+    "feature_dim": 3024,
+    "head_bias_sha256": "99d87a8ae327bbd0f805d336f22cdfe4746de067f39568481e2b181123e7ac6f",
+    "head_weight_sha256": "0dc9dc433c739e21376a26fb0ed14b263aed65d2eec87aff836ce84cff53db7a",
+    "model": "RegNetY-16GF",
+    "num_params": 83590140,
+    "source": {
+      "filename": "model.safetensors",
+      "repo": "timm/regnety_160.tv2_in1k",
+      "revision": "9a11011b4491396addc1cd9e4b3c1c1df4abfdac",
+      "sha256": "e55e11e16400edcd7f2e0586e76a4e88f8155ff9861929aec7fe726f789cdc43",
+      "state_key": "state_dict"
+    },
+    "transform": {
+      "crop_pct": 0.965,
+      "description": "Compose(\n    Resize(size=232, interpolation=bicubic, max_size=None, antialias=True)\n    CenterCrop(size=(224, 224))\n    MaybeToTensor()\n    Normalize(mean=tensor([0.4850, 0.4560, 0.4060]), std=tensor([0.2290, 0.2240, 0.2250]))\n)",
+      "input_size": [
+        3,
+        224,
+        224
+      ],
+      "interpolation": "bicubic",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "architecture": "regnety_160.tv2_in1k"
+  },
+  "ImageNet1K/ResNet50": {
+    "feature_definition": "forward_head(forward_features(x), pre_logits=True)",
+    "feature_dim": 2048,
+    "head_bias_sha256": "e0088ba8ffa29f5b1c8e58a1e5be1a910df6150efdb809793b85d00c108d0c9a",
+    "head_weight_sha256": "f0883a8c8dffa11d77871cc5c8c315aaacdb552f845abb9c66bd679668eefca2",
+    "model": "ResNet50",
+    "num_params": 25557032,
+    "source": {
+      "filename": "model.safetensors",
+      "repo": "timm/resnet50.tv2_in1k",
+      "revision": "10eea9779fc8a753af919714889bd7f60fba412d",
+      "sha256": "30f57ada2f100011a4bd38000df906d6354688a8ca599be580337151c3c5f6a3",
+      "state_key": "state_dict"
+    },
+    "transform": {
+      "crop_pct": 0.965,
+      "description": "Compose(\n    Resize(size=232, interpolation=bilinear, max_size=None, antialias=True)\n    CenterCrop(size=(224, 224))\n    MaybeToTensor()\n    Normalize(mean=tensor([0.4850, 0.4560, 0.4060]), std=tensor([0.2290, 0.2240, 0.2250]))\n)",
+      "input_size": [
+        3,
+        224,
+        224
+      ],
+      "interpolation": "bilinear",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "architecture": "resnet50.tv2_in1k"
+  },
+  "ImageNet1K/SwinV2-B": {
+    "feature_definition": "forward_head(forward_features(x), pre_logits=True)",
+    "feature_dim": 1024,
+    "head_bias_sha256": "f046b8352073b23ff3592c8291539f01b22a8789dee734074c4b5e30ff4e7c1e",
+    "head_weight_sha256": "256f76a8fce244f02d9da87149ee42d3c51cb6af074afe93f39bfad61b2609dd",
+    "model": "SwinV2-B",
+    "num_params": 87918816,
+    "source": {
+      "filename": "model.safetensors",
+      "repo": "timm/swinv2_base_window16_256.ms_in1k",
+      "revision": "9e2bc70d011c17e8ae6720bf731990a8970c9f0e",
+      "sha256": "08c0755632bcffcb7b77e3a6cc868f8d9c72ee619c8ba9587c2ca66669fdbe00",
+      "state_key": "state_dict"
+    },
+    "transform": {
+      "crop_pct": 0.9,
+      "description": "Compose(\n    Resize(size=284, interpolation=bicubic, max_size=None, antialias=True)\n    CenterCrop(size=(256, 256))\n    MaybeToTensor()\n    Normalize(mean=tensor([0.4850, 0.4560, 0.4060]), std=tensor([0.2290, 0.2240, 0.2250]))\n)",
+      "input_size": [
+        3,
+        256,
+        256
+      ],
+      "interpolation": "bicubic",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "architecture": "swinv2_base_window16_256.ms_in1k"
+  },
+  "ImageNet1K/ViT-B16-CLIP-L2b-In12k": {
+    "feature_definition": "forward_head(forward_features(x), pre_logits=True)",
+    "feature_dim": 768,
+    "head_bias_sha256": "b6f421b03a42867567013b26ab5edc13abf63b0133bd26b2ad72ca027de44dd9",
+    "head_weight_sha256": "d4f20ffc531619ea3ca320e237892c6d1996ac3f17aef9de93f575ecab568fa9",
+    "model": "ViT-B16-CLIP-L2b-In12k",
+    "num_params": 86568424,
+    "source": {
+      "filename": "model.safetensors",
+      "repo": "timm/vit_base_patch16_clip_224.laion2b_ft_in12k_in1k",
+      "revision": "06346c6e9051d137049cc36c5a25fc382887d6dc",
+      "sha256": "d8f306a3637368d98d911bc895b90cf840bce0b01ea842f3432dc1788db56057",
+      "state_key": "state_dict"
+    },
+    "transform": {
+      "crop_pct": 0.95,
+      "description": "Compose(\n    Resize(size=235, interpolation=bicubic, max_size=None, antialias=True)\n    CenterCrop(size=(224, 224))\n    MaybeToTensor()\n    Normalize(mean=tensor([0.4815, 0.4578, 0.4082]), std=tensor([0.2686, 0.2613, 0.2758]))\n)",
+      "input_size": [
+        3,
+        224,
+        224
+      ],
+      "interpolation": "bicubic",
+      "mean": [
+        0.48145466,
+        0.4578275,
+        0.40821073
+      ],
+      "std": [
+        0.26862954,
+        0.26130258,
+        0.27577711
+      ]
+    },
+    "architecture": "vit_base_patch16_clip_224.laion2b_ft_in12k_in1k"
+  },
+  "ImageNet1K/Vim-Base": {
+    "feature_definition": "final middle class token",
+    "feature_dim": 768,
+    "head_bias_sha256": "325b315047c7f93d1e008bd5c4a2b17edd233c308a504673e222e4ac61aa772c",
+    "head_weight_sha256": "c5a44de40df296c11e07f8b7b001d7c7083bcf3e48fddd99bc4ac0ce381ca1e3",
+    "model": "Vim-Base",
+    "num_params": 97598440,
+    "source": {
+      "filename": "vim_b_midclstok_81p9acc.pth",
+      "repo": "hustvl/Vim-base-midclstok",
+      "revision": "7eb144c8b1eb2cfc1ebf26c3b95b540476e49a41",
+      "sha256": "647fbc0cd50187bf26e5c2e0a5c94b91523de3ff4ffe4337a0178c3421e08881",
+      "source_commit": "dd0358ad1e42701f22afbefa0717cc8825cf9f45",
+      "source_patch_sha256": {
+        "mamba-1p1p1/mamba_ssm/utils/generation.py": "2b17bd5941a772979c4bd806cd59559441f504bf36bf05bb15d37f80814ff1d6",
+        "vim/models_mamba.py": "65dd09b8bbe690ca6c7f6812df562abc8eb1c7e7968d09c73053f50fa6c22982"
+      },
+      "state_key": "model_ema"
+    },
+    "transform": {
+      "crop_pct": 0.875,
+      "description": "Compose(\n    Resize(size=256, interpolation=bicubic, max_size=None, antialias=True)\n    CenterCrop(size=(224, 224))\n    ToTensor()\n    Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])\n)",
+      "input_size": [
+        3,
+        224,
+        224
+      ],
+      "interpolation": "bicubic",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "resize": 256,
+      "crop": 224
+    },
+    "architecture": "vim_base_patch16_224_bimambav2_final_pool_mean_abs_pos_embed_with_middle_cls_token_div2",
+    "architecture_kwargs": {
+      "img_size": 224,
+      "drop_path_rate": 0.1
+    }
+  }
+}
