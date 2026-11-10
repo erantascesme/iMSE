@@ -198,11 +198,22 @@ pip install -e .
 python -m imse_benchmark all --dataset CIFAR10
 ```
 
-Use [Reproduce.ipynb](Reproduce.ipynb) from a local checkout or [open the Colab notebook](https://colab.research.google.com/github/erantascesme/iMSE/blob/main/Reproduce_Colab.ipynb). Both run the same code. Choose `CIFAR10`, `CIFAR100`, or `ImageNet1K`. Use `--backbone` to run a single paper backbone, or `--work-dir` to store data, checkpoints, feature caches, and results elsewhere.
+Use [Reproduce.ipynb](Reproduce.ipynb) from a local checkout or [open the Colab notebook](https://colab.research.google.com/github/erantascesme/iMSE/blob/main/Reproduce_Colab.ipynb). Both install and run the same code, with separate download, extraction, and evaluation cells. Choose `CIFAR10`, `CIFAR100`, or `ImageNet1K`. Use `--backbone` to run a single paper backbone, or `--work-dir` to store data, checkpoints, feature caches, and results elsewhere. Command output, including errors, is displayed and saved in timestamped `work/logs/` files. Colab updates a clean checkout by default and prints its commit ID.
 
 Run `download`, `extract`, or `evaluate` to execute individual stages. The evaluator reuses completed feature caches and prints AUROC / FPR95 for All, Near, and Far. Results include checkpoint metrics, backbone averages, and dataset averages in `work/results/`. After a code update, use a fresh `--output` directory for evaluation and point `--features` at your existing feature cache.
 
 **Data and checkpoint access.** CIFAR data and OpenOOD ResNet18 checkpoints are downloaded from the OpenOOD releases. To download ImageNet-1K, accept the [dataset access terms](https://huggingface.co/datasets/ILSVRC/imagenet-1k) and run `hf auth login` or set a read token through `HF_TOKEN`. In Colab, add `HF_TOKEN` to Secrets. For local ImageNet data, use `work/data/imagenet/{train,val,NINCO,SSB_Hard,iNaturalist,Textures,OpenImage_O}` with the canonical archives or extracted images. Full ImageNet-1K requires substantial disk and compute. Use `pip install -e ".[vim]"` for Vim-Base, which builds the pinned extensions with a CUDA toolkit compatible with PyTorch.
+
+No personal Google Drive files or previously saved experiment outputs are required. OpenOOD's **public** Drive releases are the same sources used by the original CIFAR notebooks. Optional Colab Drive mounting only chooses where to store your new run.
+
+| Data | Download source |
+|---|---|
+| CIFAR-10/100 and their OOD sets | [OpenOOD release archives](https://github.com/Jingkang50/OpenOOD/blob/3c35632ee91b54b09d1f085d04f94744cece7d0b/scripts/download/download.py), with the original archive IDs and SHA-256 hashes |
+| ImageNet-1K | `ILSVRC/imagenet-1k`, revision `script`, five training archives and one validation archive |
+| SSB-Hard and OpenImage-O | `torch-uncertainty/SSB_hard` and `torch-uncertainty/Openimage-O`, as in the canonical download notebook |
+| NINCO, iNaturalist, and Textures | OpenOOD's public original-image archives; only the pinned benchmark manifest rows are evaluated |
+
+The ordered manifests, checkpoint hashes, preprocessing, and detector settings preserve the reviewed experiment. Numerical checks against the earlier implementation are not a fresh end-to-end GPU rerun. Small floating-point differences can remain across GPU and library versions; bitwise equality with the paper run is not guaranteed.
 
 **Protocol.** Each detector uses the paper's frozen checkpoints and ordered data splits. KNN, ViM, ReAct, and SCALE select settings on validation AUROC. iMSE fits on ID training data with `k=16` or `k=all` and `tau=1`. The CIFAR NNGuide run uses the original ordered bank. AUROC and FPR95 are macro-averaged over OOD datasets, then averaged over checkpoints within each backbone. FPR95 measures ID rejection at 95% OOD recall.
 
