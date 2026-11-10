@@ -1,0 +1,97 @@
+{
+  "drive_mirrors": {
+    "1Co32RiiWe16lTaiOU6JMMnyUYS41IlO1": {
+      "sha256": "5d3c480cd13e8791af7429fde3884f6ac45a7191c17fc1414eec550ed2e6582c",
+      "url": "https://huggingface.co/datasets/torch-uncertainty/Cifar10/resolve/24a736c3ae31fe13c7338dc3a74468defccadd02/cifar10.zip"
+    },
+    "1PGKheHUsf29leJPPGuXqzLBMwl8qMF8_": {
+      "sha256": "db6301142ca4119cb104a194e31a8f1190a1873759c3aa409b04c7899e9868f8",
+      "url": "https://huggingface.co/datasets/torch-uncertainty/Cifar100/resolve/178ee958af19c5e5f0ca9fa6fddf327e2eb1e42b/cifar100.zip"
+    },
+    "1CCHAGWqA1KJTFFswuF9cbhmB-j98Y1Sb": {
+      "sha256": "47e04388bccdcb0c5bb416e98720382129156c13f56dadeb97935f4a012cd0f9",
+      "url": "https://huggingface.co/datasets/torch-uncertainty/MNIST/resolve/23ac9bf95ec214872d30b83971ccf3e98d81e580/mnist.zip"
+    },
+    "1Ec-LRSTf6u5vEctKX9vRp9OA6tqnJ0Ay": {
+      "sha256": "76639b253baca242da1b2746b56983c364e999d0eb63c4b901d8473f23b2e7ab",
+      "url": "https://huggingface.co/datasets/torch-uncertainty/Places365/resolve/5bdbcbcaf7f09a8e9630650195dfb7ddf6e0eae4/places365.zip"
+    },
+    "1DQfc11HOtB1nEwqS4pWUFp8vtQ3DczvI": {
+      "sha256": "56fdae7a5409712bcf10ce460c3e1f30550e73c89b70b9544bf136a84c61c0ae",
+      "url": "https://huggingface.co/datasets/torch-uncertainty/SVHN/resolve/77b1ad66bf12faea039cb50365035e22cbe6a2c2/svhn.zip"
+    },
+    "1OSz1m3hHfVWbRdmMwKbUzoU8Hg9UKcam": {
+      "sha256": "801fd2026c281090e6f42a5bddbc7ab55d8d03e79ee4bcc22d61bdef59862926",
+      "url": "https://huggingface.co/datasets/torch-uncertainty/Texture/resolve/6e5b117b0da84423390df383076b15789df6386e/texture.zip"
+    },
+    "1PZ-ixyx52U989IKsMA2OT-24fToTrelC": {
+      "sha256": "e95af0741e02afeb62c58cac3b5ac53ada99bee67bde65b061a423e2e40deb9d",
+      "url": "https://huggingface.co/datasets/torch-uncertainty/tiny-imagenet-200/resolve/7060950e6795699e3d86de8c4f4400573044371a/tin.zip"
+    },
+    "1byGeYxM_PlLjT72wZsMQvP6popJeWBgt": {
+      "sha256": "c8e9d203ee9dd75ffa22a2b0d771341104b0ab366c4c4598578f4b5ae2fa071a",
+      "url": "https://github.com/erantascesme/iMSE/releases/download/benchmark-data-v1/cifar10_res18_v1.5.zip"
+    },
+    "1s-1oNrRtmA0pGefxXJOUVRYpaoAML0C-": {
+      "sha256": "9967390ee4f26d425b5c5eedecc8f0d28598648fc0aa2b8ba74cbdb6fb3665ca",
+      "url": "https://github.com/erantascesme/iMSE/releases/download/benchmark-data-v1/cifar100_res18_v1.5.zip"
+    },
+    "1Z82cmvIB0eghTehxOGP5VTdLt7OD3nk6": {
+      "sha256": "e6870bb704e18a19cf6308bdb297033a89bf02a6d8ad0eb1e770c7d570644c6e",
+      "url": "https://huggingface.co/datasets/torch-uncertainty/Ninco/resolve/ab59b6e1f0a842c3e25673e6aad00a299b240007/ninco.zip"
+    },
+    "1zfLfMvoUD0CUlKNnkk7LgxZZBnTBipdj": {
+      "sha256": "ad6ba788de0eb9f7125d5dc2c08a30a806ef0c6defc48a9cf571dd56b3e30a0b",
+      "url": "https://huggingface.co/datasets/torch-uncertainty/inaturalist/resolve/44506d45cd3300422489c6685112ccbe52ab1559/inaturalist.zip"
+    }
+  },
+  "imagenet_ood": {
+    "NINCO": {
+      "repo": "torch-uncertainty/Ninco",
+      "revision": "ab59b6e1f0a842c3e25673e6aad00a299b240007",
+      "filename": "ninco.zip",
+      "sha256": "e6870bb704e18a19cf6308bdb297033a89bf02a6d8ad0eb1e770c7d570644c6e",
+      "bytes": 674439979
+    },
+    "iNaturalist": {
+      "repo": "torch-uncertainty/inaturalist",
+      "revision": "44506d45cd3300422489c6685112ccbe52ab1559",
+      "filename": "inaturalist.zip",
+      "sha256": "ad6ba788de0eb9f7125d5dc2c08a30a806ef0c6defc48a9cf571dd56b3e30a0b",
+      "bytes": 3952024451
+    },
+    "Textures": {
+      "repo": "torch-uncertainty/Texture",
+      "revision": "6e5b117b0da84423390df383076b15789df6386e",
+      "filename": "texture.zip",
+      "sha256": "801fd2026c281090e6f42a5bddbc7ab55d8d03e79ee4bcc22d61bdef59862926",
+      "bytes": 625703847
+    },
+    "SSB_Hard": {
+      "repo": "torch-uncertainty/SSB_hard",
+      "revision": "2ca5e20f8fecd834e6d02034c0104716eb1f1aaa",
+      "filename": "ssb_hard.zip",
+      "sha256": "b7653e07a318852276208acab9a6d7950c05e17307a0f8b63aaf5f4c8ae96919",
+      "bytes": 1055841329
+    },
+    "OpenImage_O": {
+      "repo": "torch-uncertainty/Openimage-O",
+      "revision": "c48fdc053355ee7c4b7012e6e677b2ea3ec4518f",
+      "filename": "openimage_o.zip",
+      "sha256": "1b16b9b7cce2972d1bf988c5eea38cb30be736f2c77b84b707036bd8c0eaa9d6",
+      "bytes": 619605926
+    }
+  },
+  "imagenet_id": {
+    "repo": "ILSVRC/imagenet-1k",
+    "revision": "4603483700ee984ea9debe3ddbfdeae86f6489eb",
+    "files": {
+      "data/train_images_0.tar.gz": 29138256959,
+      "data/train_images_1.tar.gz": 29261436971,
+      "data/train_images_2.tar.gz": 29036415239,
+      "data/train_images_3.tar.gz": 29227044756,
+      "data/train_images_4.tar.gz": 29147095755,
+      "data/val_images.tar.gz": 6667094731
+    }
+  }
+}

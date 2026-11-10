@@ -2,11 +2,12 @@
 
 import os
 import time
+import urllib.error
 import urllib.request
 import zipfile
 from pathlib import Path
 
-from ..common import checked, require
+from ..common import ASSETS, checked, load_json, require
 from .manifests import DATASETS, IMAGE_EXTS
 
 IMAGENET_ASSETS = {
@@ -18,12 +19,9 @@ OPENOOD_IMAGENET_ASSETS = {
     "iNaturalist": "1zfLfMvoUD0CUlKNnkk7LgxZZBnTBipdj",
     "Textures": "1OSz1m3hHfVWbRdmMwKbUzoU8Hg9UKcam",
 }
-PUBLIC_MIRRORS = {
-    "1Co32RiiWe16lTaiOU6JMMnyUYS41IlO1": (
-        "5d3c480cd13e8791af7429fde3884f6ac45a7191c17fc1414eec550ed2e6582c",
-        "https://github.com/erantascesme/iMSE/releases/download/benchmark-data-v1/cifar10.zip",
-    ),
-}
+DOWNLOADS = load_json(ASSETS / "downloads.json")
+PUBLIC_MIRRORS = {key: (value["sha256"], value["url"])
+                  for key, value in DOWNLOADS["drive_mirrors"].items()}
 
 
 def _download_mirror(path, url, digest):
@@ -32,12 +30,20 @@ def _download_mirror(path, url, digest):
     temporary = path.with_suffix(".mirror.download")
     print(f"Using verified public mirror: {path.name}", flush=True)
     request = urllib.request.Request(url, headers={"User-Agent": "iMSE-benchmark"})
-    with urllib.request.urlopen(request, timeout=120) as response, temporary.open("wb") as output:
-        total = int(response.headers.get("Content-Length", 0)) or None
-        with tqdm(total=total, unit="B", unit_scale=True, desc=path.name) as progress:
-            while block := response.read(1024 * 1024):
-                output.write(block)
-                progress.update(len(block))
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(request, timeout=120) as response, temporary.open("wb") as output:
+                total = int(response.headers.get("Content-Length", 0)) or None
+                with tqdm(total=total, unit="B", unit_scale=True, desc=path.name) as progress:
+                    while block := response.read(1024 * 1024):
+                        output.write(block)
+                        progress.update(len(block))
+            break
+        except (urllib.error.URLError, TimeoutError, ConnectionError):
+            if attempt == 2:
+                raise
+            print(f"Mirror connection interrupted; retrying {path.name}", flush=True)
+            time.sleep(3 * (attempt + 1))
     checked(temporary, digest)
     require(zipfile.is_zipfile(temporary), f"Invalid mirrored ZIP: {temporary}")
     os.replace(temporary, path)
@@ -47,6 +53,10 @@ def _download_mirror(path, url, digest):
 def download_drive(path, file_id, digest):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
+    if file_id in PUBLIC_MIRRORS:
+        expected = PUBLIC_MIRRORS[file_id][0]
+        require(digest in (None, expected), "Requested archive differs from the pinned public source")
+        digest = expected
     if not path.exists():
         import gdown
 
@@ -96,15 +106,29 @@ def _has_images(folder):
                                   for p in folder.rglob("*"))
 
 
-def _download_hf(repo, filename, target, revision="main"):
+def _download_hf(repo, filename, target, revision="main", digest=None, size=None):
     from huggingface_hub import hf_hub_download
+    from huggingface_hub.errors import GatedRepoError
 
     target = Path(target)
-    # Existing canonical archives can be placed directly in the dataset folder.
-    if (target / Path(filename).name).is_file():
-        return
+    def validate(path):
+        if size is not None:
+            require(path.stat().st_size == size, f"Incomplete source archive: {path}")
+        return checked(path, digest) if digest else path
+
+    for path in dict.fromkeys((target / filename, target / Path(filename).name)):
+        if path.is_file():
+            return validate(path)
     print(f"Downloading {repo}/{filename}", flush=True)
-    hf_hub_download(repo, filename, repo_type="dataset", revision=revision, local_dir=target)
+    try:
+        path = Path(hf_hub_download(repo, filename, repo_type="dataset",
+                                  revision=revision, local_dir=target))
+    except GatedRepoError as exc:
+        raise RuntimeError(
+            f"Accept the dataset terms at https://huggingface.co/datasets/{repo} "
+            "and supply your own read token as HF_TOKEN (Colab Secrets or hf auth login)."
+        ) from exc
+    return validate(path)
 
 
 def download(dataset, root):
@@ -116,16 +140,21 @@ def download(dataset, root):
         return
 
     base = root / "imagenet"
+    id_spec = DOWNLOADS["imagenet_id"]
     for asset, names in (("train", [f"train_images_{i}.tar.gz" for i in range(5)]),
                          ("val", ["val_images.tar.gz"])):
         target = base / asset
         if not _has_images(target):
             for name in names:
-                _download_hf("ILSVRC/imagenet-1k", f"data/{name}", target, revision="script")
+                filename = f"data/{name}"
+                _download_hf(id_spec["repo"], filename, target, id_spec["revision"],
+                             size=id_spec["files"][filename])
     for asset, (repo, filename) in IMAGENET_ASSETS.items():
         target = base / asset
         if not _has_images(target):
-            _download_hf(f"torch-uncertainty/{repo}", filename, target)
+            spec = DOWNLOADS["imagenet_ood"][asset]
+            _download_hf(spec["repo"], filename, target, spec["revision"],
+                         spec["sha256"], spec["bytes"])
     for asset, file_id in OPENOOD_IMAGENET_ASSETS.items():
         target = base / asset
         if not _has_images(target):

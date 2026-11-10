@@ -206,14 +206,14 @@ Run `download`, `extract`, or `evaluate` to execute individual stages. The evalu
 
 No personal Google Drive files or previously saved experiment outputs are required. OpenOOD's **public** Drive releases are the same sources used by the original CIFAR notebooks. Optional Colab Drive mounting only chooses where to store your new run.
 
-If OpenOOD's CIFAR-10 link is quota-limited or unavailable, the downloader automatically uses the [public archive mirror](https://github.com/erantascesme/iMSE/releases/tag/benchmark-data-v1). The mirror contains the byte-identical original ZIP and is checked against the same pinned SHA-256 before use. No manual upload is needed. Other archives continue to use their original public sources and can still be temporarily unavailable because of provider quotas. Completed verified downloads are reused when the notebook is rerun. Dataset ownership and usage terms remain with the original providers.
+If an OpenOOD public Drive download is unavailable, the downloader automatically uses a checksum-verified public fallback. Dataset fallbacks use existing TorchUncertainty Hugging Face mirrors. All seven CIFAR archive hashes match the original experiment exactly; the ImageNet OOD repositories are also listed in the original canonical download notebook. OpenOOD ResNet18 checkpoints use [verified release mirrors](https://github.com/erantascesme/iMSE/releases/tag/benchmark-data-v1). Source revisions, archive identities, and fallback URLs are pinned in `imse_benchmark/assets/downloads.json`. Completed verified downloads are reused. No manual uploads or access to the authors' Drive are required. Dataset ownership and usage terms remain with the original providers.
 
 | Data | Download source |
 |---|---|
 | CIFAR-10/100 and their OOD sets | [OpenOOD release archives](https://github.com/Jingkang50/OpenOOD/blob/3c35632ee91b54b09d1f085d04f94744cece7d0b/scripts/download/download.py), with the original archive IDs and SHA-256 hashes |
-| ImageNet-1K | `ILSVRC/imagenet-1k`, revision `script`, five training archives and one validation archive |
+| ImageNet-1K | `ILSVRC/imagenet-1k`, pinned commit of the original `script` revision; five training archives and one validation archive |
 | SSB-Hard and OpenImage-O | `torch-uncertainty/SSB_hard` and `torch-uncertainty/Openimage-O`, as in the canonical download notebook |
-| NINCO, iNaturalist, and Textures | OpenOOD's public original-image archives; only the pinned benchmark manifest rows are evaluated |
+| NINCO, iNaturalist, and Textures | OpenOOD public archives, with pinned `torch-uncertainty/Ninco`, `torch-uncertainty/inaturalist`, and `torch-uncertainty/Texture` fallbacks; only benchmark manifest rows are evaluated |
 
 The ordered manifests, checkpoint hashes, preprocessing, and detector settings preserve the reviewed experiment. Numerical checks against the earlier implementation are not a fresh end-to-end GPU rerun. Small floating-point differences can remain across GPU and library versions; bitwise equality with the paper run is not guaranteed.
 
@@ -232,7 +232,7 @@ imse_benchmark/
 ├── backbones/         # Checkpoints, architectures, preprocessing, and feature caches
 ├── detectors/         # One module per detector family
 ├── benchmark/         # Evaluation and metric tables
-└── assets/            # Split manifests, checkpoint locks, and license notices
+└── assets/            # Split manifests, checkpoint/download locks, and license notices
 ```
 
 The [checkpoint manifest](imse_benchmark/assets/checkpoints.json) records the architecture, weight source, revision or hash, and preprocessing for each backbone. Architectures use pinned [timm](https://github.com/huggingface/pytorch-image-models), the [official Vim source](https://github.com/hustvl/Vim), or bundled [OpenOOD](https://github.com/Jingkang50/OpenOOD) and [ODIN](https://github.com/facebookresearch/odin) implementations.
