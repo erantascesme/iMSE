@@ -2,6 +2,7 @@
 
 import os
 import time
+import urllib.request
 import zipfile
 from pathlib import Path
 
@@ -17,6 +18,30 @@ OPENOOD_IMAGENET_ASSETS = {
     "iNaturalist": "1zfLfMvoUD0CUlKNnkk7LgxZZBnTBipdj",
     "Textures": "1OSz1m3hHfVWbRdmMwKbUzoU8Hg9UKcam",
 }
+PUBLIC_MIRRORS = {
+    "1Co32RiiWe16lTaiOU6JMMnyUYS41IlO1": (
+        "5d3c480cd13e8791af7429fde3884f6ac45a7191c17fc1414eec550ed2e6582c",
+        "https://github.com/erantascesme/iMSE/releases/download/benchmark-data-v1/cifar10.zip",
+    ),
+}
+
+
+def _download_mirror(path, url, digest):
+    from tqdm.auto import tqdm
+
+    temporary = path.with_suffix(".mirror.download")
+    print(f"Using verified public mirror: {path.name}", flush=True)
+    request = urllib.request.Request(url, headers={"User-Agent": "iMSE-benchmark"})
+    with urllib.request.urlopen(request, timeout=120) as response, temporary.open("wb") as output:
+        total = int(response.headers.get("Content-Length", 0)) or None
+        with tqdm(total=total, unit="B", unit_scale=True, desc=path.name) as progress:
+            while block := response.read(1024 * 1024):
+                output.write(block)
+                progress.update(len(block))
+    checked(temporary, digest)
+    require(zipfile.is_zipfile(temporary), f"Invalid mirrored ZIP: {temporary}")
+    os.replace(temporary, path)
+    return path
 
 
 def download_drive(path, file_id, digest):
@@ -35,20 +60,24 @@ def download_drive(path, file_id, digest):
             except Exception as exc:
                 quota = any(message in str(exc).lower() for message in
                             ("too many users", "download quota", "quota exceeded"))
+                if quota or attempt == 2:
+                    mirror = PUBLIC_MIRRORS.get(file_id)
+                    if mirror is not None:
+                        require(digest == mirror[0], "Mirror does not match the requested archive identity")
+                        return _download_mirror(path, mirror[1], digest)
                 if quota:
                     raise RuntimeError(
                         f"OpenOOD's public download quota is exhausted for {path.name}. "
                         "Immediate retries will not help. Wait for the provider to reset it, "
-                        f"or place the exact original ZIP at {path}. "
-                        "The reproduction notebook's optional archive-import cell verifies "
-                        "the original SHA-256 before importing a local copy. "
+                        "then rerun the download cell. No verified public mirror is "
+                        "configured for this archive. "
                         f"Source: https://drive.google.com/file/d/{file_id}/view"
                     ) from exc
                 if attempt == 2:
                     raise RuntimeError(
                         f"Cannot download {path.name} from OpenOOD's public release. "
                         f"Source: https://drive.google.com/file/d/{file_id}/view. "
-                        f"Retry later or place that exact archive at {path}. "
+                        "Rerun the download cell after the public source becomes available. "
                         "No personal Google Drive access is required."
                     ) from exc
                 print(f"Download interrupted: {exc}", flush=True)

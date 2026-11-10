@@ -206,7 +206,7 @@ Run `download`, `extract`, or `evaluate` to execute individual stages. The evalu
 
 No personal Google Drive files or previously saved experiment outputs are required. OpenOOD's **public** Drive releases are the same sources used by the original CIFAR notebooks. Optional Colab Drive mounting only chooses where to store your new run.
 
-If a public Drive link exceeds its download quota, immediate retries cannot resolve it. Wait for the provider to reset the quota, or use the notebook's optional `MANUAL_ARCHIVES` cell to import an already downloaded original CIFAR benchmark ZIP. The cell verifies its pinned SHA-256 before copying it into `work/data/cifar/`. Upload the ZIP to `/content` using Colab's Files sidebar; do not unzip or repack it. Then rerun the import and download cells.
+If OpenOOD's CIFAR-10 link is quota-limited or unavailable, the downloader automatically uses the [public archive mirror](https://github.com/erantascesme/iMSE/releases/tag/benchmark-data-v1). The mirror contains the byte-identical original ZIP and is checked against the same pinned SHA-256 before use. No manual upload is needed. Other archives continue to use their original public sources and can still be temporarily unavailable because of provider quotas. Completed verified downloads are reused when the notebook is rerun. Dataset ownership and usage terms remain with the original providers.
 
 | Data | Download source |
 |---|---|
