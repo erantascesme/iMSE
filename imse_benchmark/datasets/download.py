@@ -33,6 +33,17 @@ def download_drive(path, file_id, digest):
                 require(result is not None, "The download did not return a file")
                 break
             except Exception as exc:
+                quota = any(message in str(exc).lower() for message in
+                            ("too many users", "download quota", "quota exceeded"))
+                if quota:
+                    raise RuntimeError(
+                        f"OpenOOD's public download quota is exhausted for {path.name}. "
+                        "Immediate retries will not help. Wait for the provider to reset it, "
+                        f"or place the exact original ZIP at {path}. "
+                        "The reproduction notebook's optional archive-import cell verifies "
+                        "the original SHA-256 before importing a local copy. "
+                        f"Source: https://drive.google.com/file/d/{file_id}/view"
+                    ) from exc
                 if attempt == 2:
                     raise RuntimeError(
                         f"Cannot download {path.name} from OpenOOD's public release. "

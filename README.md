@@ -206,6 +206,8 @@ Run `download`, `extract`, or `evaluate` to execute individual stages. The evalu
 
 No personal Google Drive files or previously saved experiment outputs are required. OpenOOD's **public** Drive releases are the same sources used by the original CIFAR notebooks. Optional Colab Drive mounting only chooses where to store your new run.
 
+If a public Drive link exceeds its download quota, immediate retries cannot resolve it. Wait for the provider to reset the quota, or use the notebook's optional `MANUAL_ARCHIVES` cell to import an already downloaded original CIFAR benchmark ZIP. The cell verifies its pinned SHA-256 before copying it into `work/data/cifar/`. Upload the ZIP to `/content` using Colab's Files sidebar; do not unzip or repack it. Then rerun the import and download cells.
+
 | Data | Download source |
 |---|---|
 | CIFAR-10/100 and their OOD sets | [OpenOOD release archives](https://github.com/Jingkang50/OpenOOD/blob/3c35632ee91b54b09d1f085d04f94744cece7d0b/scripts/download/download.py), with the original archive IDs and SHA-256 hashes |
