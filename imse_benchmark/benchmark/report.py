@@ -12,6 +12,7 @@ KEY = ["Dataset", "Backbone", "Run", "Detector", "Scope"]
 
 
 def aggregate(rows):
+    rows = rows[rows.Detector.isin(DETECTORS)].copy()
     require(not rows.duplicated(KEY).any(), "Duplicate metric rows")
     require(np.isfinite(rows[METRICS].to_numpy()).all(), "Nonfinite metrics")
     groups = KEY[:-1]

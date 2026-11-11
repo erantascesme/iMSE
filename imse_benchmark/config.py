@@ -13,19 +13,8 @@ VALIDATION_GRIDS = {
 }
 KNN_TEST_COMPANION = {"CIFAR10": 50, "CIFAR100": 200, "ImageNet1K": 1000}
 
-NNGUIDE_K = 100
-NNGUIDE_BANK_FRACTION = 0.01
-NNGUIDE_BANK_BATCH = 200
-NNGUIDE_IMAGENET_SEED = 0
-NNGUIDE_CIFAR_COMPANION_K = 10
-NNGUIDE_BANK_POLICY = {
-    "CIFAR10": "ordered prefix",
-    "CIFAR100": "ordered prefix",
-    "ImageNet1K": "shuffled official manifest",
-}
-
 DETECTORS = (
-    "MSP", "Energy", "LogitGap", "KNN", "NNGuide", "fDBD", "Mahalanobis",
+    "MSP", "Energy", "LogitGap", "KNN", "fDBD", "Mahalanobis",
     "Mahalanobis++", "Relative-Mahalanobis", "Relative-Mahalanobis++",
     "ViM", "ReAct", "SCALE", *IMSE_SETTINGS,
 )

@@ -9,7 +9,7 @@ from sklearn.metrics import roc_curve, auc
 
 from .. import config
 from ..config import DETECTORS
-from ..detectors import energy, fdbd, knn, logit_gap, mahalanobis, msp, nnguide, react, scale, vim
+from ..detectors import energy, fdbd, knn, logit_gap, mahalanobis, msp, react, scale, vim
 from ..detectors import imse as covariance
 from ..common import atomic_json, hash_file, load_json, require
 from ..datasets import DATASETS, ood_groups
@@ -134,16 +134,11 @@ def evaluate(dataset, backbone, run, features, output, device, *, verify_cohort=
     x, y, l, w = (train[k] for k in ("features", "labels", "logits", "weight"))
     classes = l.shape[1]
     knn_grid = config.VALIDATION_GRIDS["KNN"]
-    guide_k = config.NNGUIDE_K
     companion_k = config.KNN_TEST_COMPANION[dataset]
-    bank_args = {"alpha": config.NNGUIDE_BANK_FRACTION, "batch_size": config.NNGUIDE_BANK_BATCH}
     if dataset == "ImageNet1K":
-        tx, ty, tl = map(torch.from_numpy, (x, y, l))
+        tx, ty = map(torch.from_numpy, (x, y))
         neighbors = knn.ExactNeighbors(tx, device)
         v_id, v_ood = (neighbors.score_many(torch.from_numpy(v["features"]), knn_grid) for v in (id_val, ood_val))
-        order = train.get("official_order", np.arange(len(tx)))
-        indices = nnguide.openood_nnguide_indices(order, seed=config.NNGUIDE_IMAGENET_SEED, **bank_args)
-        guide = nnguide.NearestNeighborGuide(tx, tl, indices, device)
         boundary = fdbd.FeatureDecisionBoundary(torch.from_numpy(w), tx, device)
         gaussians = {suffix: mahalanobis.MahalanobisFamilyDetector(classes, norm, device).fit(tx, ty)
                      for suffix, norm in config.MAHALANOBIS_VARIANTS}
@@ -152,7 +147,6 @@ def evaluate(dataset, backbone, run, features, output, device, *, verify_cohort=
             features, logits = map(torch.from_numpy, (bank["features"], bank["logits"]))
             out = logit_scores(bank["logits"], gap_n=config.LOGIT_GAP_TOP[dataset])
             out["KNN"] = neighbors.score_many(features, (k, companion_k))[k]
-            out["NNGuide"] = guide.score_many(features, logits, (guide_k,))[guide_k]
             out["fDBD"] = boundary.score(features, logits)
             for suffix, g in gaussians.items():
                 _, out["Mahalanobis" + suffix], out["Relative-Mahalanobis" + suffix] = g.score_all(features)
@@ -160,7 +154,6 @@ def evaluate(dataset, backbone, run, features, output, device, *, verify_cohort=
     else:
         neighbors = knn.ExactKNN(x, device)
         v_id, v_ood = (neighbors.reference_score(v["features"], knn_grid) for v in (id_val, ood_val))
-        guide = nnguide.NNGuide(x, l, device, **bank_args)
         boundary = fdbd.FDBD(x, w)
         gaussians = {suffix: mahalanobis.GaussianFamily(norm, device).fit(x, y)
                      for suffix, norm in config.MAHALANOBIS_VARIANTS}
@@ -169,7 +162,6 @@ def evaluate(dataset, backbone, run, features, output, device, *, verify_cohort=
             features, logits = bank["features"], bank["logits"]
             out = logit_scores(logits, gap_n=config.LOGIT_GAP_TOP[dataset])
             out["KNN"] = neighbors.score(features, sorted({k, companion_k}))[k]
-            out["NNGuide"] = guide.score(features, logits, (config.NNGUIDE_CIFAR_COMPANION_K, guide_k))[guide_k]
             out["fDBD"] = boundary.score(features, logits)
             for suffix, g in gaussians.items():
                 out["Mahalanobis" + suffix], out["Relative-Mahalanobis" + suffix] = g.scores(features)
@@ -180,7 +172,6 @@ def evaluate(dataset, backbone, run, features, output, device, *, verify_cohort=
     states = fit_imse(x, y, classes, device)
     atomic_json(output / "selection.json", {
         "KNN": selected_k, **selected,
-        "NNGuide_bank_size": len(guide.indices), "NNGuide_bank_policy": config.NNGUIDE_BANK_POLICY[dataset],
         **{name: {"k": k, "tau": tau} for name, (k, tau) in config.IMSE_SETTINGS.items()},
     })
     del id_val, ood_val

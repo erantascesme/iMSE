@@ -30,6 +30,9 @@ def checkpoint(dataset, model, run, root):
     root.mkdir(parents=True, exist_ok=True)
     if "runs" in spec:
         child = spec["runs"][run]
+        bundled = ASSETS.parent.parent / "checkpoints" / dataset / model / run / "best.ckpt"
+        if bundled.is_file():
+            return checked(bundled, child["checkpoint_sha256"]), child["checkpoint_sha256"]
         path = root / run / "best.ckpt"
         if not path.exists():
             archive = download_drive(root / spec["filename"], spec["google_drive_id"],

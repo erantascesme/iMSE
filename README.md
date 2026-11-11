@@ -198,7 +198,9 @@ pip install -e .
 python -m imse_benchmark all --dataset CIFAR10
 ```
 
-Use [Reproduce.ipynb](Reproduce.ipynb) from a local checkout or [open the Colab notebook](https://colab.research.google.com/github/erantascesme/iMSE/blob/main/Reproduce_Colab.ipynb). Both install and run the same code, with separate download, extraction, and evaluation cells. Choose `CIFAR10`, `CIFAR100`, or `ImageNet1K`. Use `--backbone` to run a single paper backbone, or `--work-dir` to store data, checkpoints, feature caches, and results elsewhere. Command output, including errors, is displayed and saved in timestamped `work/logs/` files. Colab updates a clean checkout by default and prints its commit ID.
+Use [Reproduce.ipynb](Reproduce.ipynb) in Jupyter or upload [Reproduce_Colab.ipynb](Reproduce_Colab.ipynb) through Colab's **File → Upload notebook** menu. Both load the supplied repository ZIP. In Colab, select a GPU runtime and use the upload cell to choose `iMSE_Anonymous.zip`. Locally, place that ZIP beside the notebook or set `ARCHIVE` to its path. No repository clone or author-account access is required. The ZIP's SHA-256 is printed to identify the source version.
+
+Choose `CIFAR10`, `CIFAR100`, or `ImageNet1K`, and optionally a single backbone. Separate cells download data, extract features, and evaluate detectors. Command output, including errors, is displayed and saved in timestamped `work/logs/` files. Use `--work-dir` to choose a different storage location.
 
 Run `download`, `extract`, or `evaluate` to execute individual stages. The evaluator reuses completed feature caches and prints AUROC / FPR95 for All, Near, and Far. Results include checkpoint metrics, backbone averages, and dataset averages in `work/results/`. After a code update, use a fresh `--output` directory for evaluation and point `--features` at your existing feature cache.
 
@@ -206,7 +208,9 @@ Run `download`, `extract`, or `evaluate` to execute individual stages. The evalu
 
 No personal Google Drive files or previously saved experiment outputs are required. OpenOOD's **public** Drive releases are the same sources used by the original CIFAR notebooks. Optional Colab Drive mounting only chooses where to store your new run.
 
-If an OpenOOD public Drive download is unavailable, the downloader automatically uses a checksum-verified public fallback. Dataset fallbacks use existing TorchUncertainty Hugging Face mirrors. All seven CIFAR archive hashes match the original experiment exactly; the ImageNet OOD repositories are also listed in the original canonical download notebook. OpenOOD ResNet18 checkpoints use [verified release mirrors](https://github.com/erantascesme/iMSE/releases/tag/benchmark-data-v1). Source revisions, archive identities, and fallback URLs are pinned in `imse_benchmark/assets/downloads.json`. Completed verified downloads are reused. No manual uploads or access to the authors' Drive are required. Dataset ownership and usage terms remain with the original providers.
+If an OpenOOD dataset download is unavailable, the downloader uses checksum-verified TorchUncertainty Hugging Face mirrors. The seven CIFAR archive hashes match the original experiment. Source revisions, archive identities, and public fallback URLs are pinned in `imse_benchmark/assets/downloads.json`.
+
+The review ZIP includes the six original OpenOOD ResNet18 checkpoint files under `checkpoints/`. They are checked against the existing SHA-256 identities and used automatically. A source-only copy without these files uses OpenOOD's official checkpoint links, whose availability is subject to the provider's quota. No author-hosted download links are used. Other checkpoints and datasets download automatically from their public providers. Dataset and checkpoint ownership and usage terms remain with the original providers.
 
 | Data | Download source |
 |---|---|
@@ -217,7 +221,7 @@ If an OpenOOD public Drive download is unavailable, the downloader automatically
 
 The ordered manifests, checkpoint hashes, preprocessing, and detector settings preserve the reviewed experiment. Numerical checks against the earlier implementation are not a fresh end-to-end GPU rerun. Small floating-point differences can remain across GPU and library versions; bitwise equality with the paper run is not guaranteed.
 
-**Protocol.** Each detector uses the paper's frozen checkpoints and ordered data splits. KNN, ViM, ReAct, and SCALE select settings on validation AUROC. iMSE fits on ID training data with `k=16` or `k=all` and `tau=1`. The CIFAR NNGuide run uses the original ordered bank. AUROC and FPR95 are macro-averaged over OOD datasets, then averaged over checkpoints within each backbone. FPR95 measures ID rejection at 95% OOD recall.
+**Protocol.** Each detector uses the paper's frozen checkpoints and ordered data splits. KNN, ViM, ReAct, and SCALE select settings on validation AUROC. iMSE fits on ID training data with `k=16` or `k=all` and `tau=1`. AUROC and FPR95 are macro-averaged over OOD datasets, then averaged over checkpoints within each backbone. FPR95 measures ID rejection at 95% OOD recall.
 
 ## Repository layout
 
@@ -226,6 +230,7 @@ README.md
 Reproduce.ipynb
 Reproduce_Colab.ipynb
 pyproject.toml
+checkpoints/          # Original OpenOOD weights included in the review ZIP only
 imse_benchmark/
 ├── config.py          # Detector settings and validation grids
 ├── datasets/          # Downloads, image loading, and benchmark splits

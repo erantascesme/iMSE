@@ -28,14 +28,6 @@
       "sha256": "e95af0741e02afeb62c58cac3b5ac53ada99bee67bde65b061a423e2e40deb9d",
       "url": "https://huggingface.co/datasets/torch-uncertainty/tiny-imagenet-200/resolve/7060950e6795699e3d86de8c4f4400573044371a/tin.zip"
     },
-    "1byGeYxM_PlLjT72wZsMQvP6popJeWBgt": {
-      "sha256": "c8e9d203ee9dd75ffa22a2b0d771341104b0ab366c4c4598578f4b5ae2fa071a",
-      "url": "https://github.com/erantascesme/iMSE/releases/download/benchmark-data-v1/cifar10_res18_v1.5.zip"
-    },
-    "1s-1oNrRtmA0pGefxXJOUVRYpaoAML0C-": {
-      "sha256": "9967390ee4f26d425b5c5eedecc8f0d28598648fc0aa2b8ba74cbdb6fb3665ca",
-      "url": "https://github.com/erantascesme/iMSE/releases/download/benchmark-data-v1/cifar100_res18_v1.5.zip"
-    },
     "1Z82cmvIB0eghTehxOGP5VTdLt7OD3nk6": {
       "sha256": "e6870bb704e18a19cf6308bdb297033a89bf02a6d8ad0eb1e770c7d570644c6e",
       "url": "https://huggingface.co/datasets/torch-uncertainty/Ninco/resolve/ab59b6e1f0a842c3e25673e6aad00a299b240007/ninco.zip"
