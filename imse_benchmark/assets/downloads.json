@@ -85,5 +85,6 @@
       "data/train_images_4.tar.gz": 29147095755,
       "data/val_images.tar.gz": 6667094731
     }
-  }
+  },
+  "checkpoint_fallbacks": {}
 }

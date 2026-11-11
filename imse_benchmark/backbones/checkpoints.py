@@ -1,6 +1,7 @@
 import hashlib
 import os
 import shutil
+import time
 import zipfile
 from pathlib import Path
 
@@ -9,9 +10,28 @@ from torch import nn
 
 from ..common import ASSETS, checked, load_json, require
 from ..datasets import DATASETS
-from ..datasets.download import download_drive
+from ..datasets.download import DOWNLOADS, DownloadUnavailable, download_drive
 
 CHECKPOINTS = load_json(ASSETS / "checkpoints.json")
+
+
+def _download_fallback(path, file_id, digest):
+    import gdown
+
+    temporary = path.with_suffix(".download")
+    print("Downloading checkpoint from the configured fallback", flush=True)
+    for attempt in range(3):
+        try:
+            result = gdown.download(id=file_id, output=str(temporary), quiet=False,
+                                    resume=True, use_cookies=False)
+            require(result is not None, "The checkpoint download did not return a file")
+            break
+        except Exception as exc:
+            if attempt == 2:
+                raise DownloadUnavailable("The checkpoint fallback is unavailable. Rerun later.") from exc
+            time.sleep(3 * (attempt + 1))
+    checked(temporary, digest)
+    os.replace(temporary, path)
 
 
 def runs(dataset, backbone=None):
@@ -30,21 +50,25 @@ def checkpoint(dataset, model, run, root):
     root.mkdir(parents=True, exist_ok=True)
     if "runs" in spec:
         child = spec["runs"][run]
-        bundled = ASSETS.parent.parent / "checkpoints" / dataset / model / run / "best.ckpt"
-        if bundled.is_file():
-            return checked(bundled, child["checkpoint_sha256"]), child["checkpoint_sha256"]
         path = root / run / "best.ckpt"
         if not path.exists():
-            archive = download_drive(root / spec["filename"], spec["google_drive_id"],
-                                     spec["archive_sha256"])
-            with zipfile.ZipFile(archive) as handle:
-                data = handle.read(child["member"])
-            require(hashlib.sha256(data).hexdigest() == child["checkpoint_sha256"],
-                    "Unexpected OpenOOD checkpoint member")
             path.parent.mkdir(parents=True, exist_ok=True)
-            temp = path.with_suffix(".part")
-            temp.write_bytes(data)
-            os.replace(temp, path)
+            try:
+                archive = download_drive(root / spec["filename"], spec["google_drive_id"],
+                                         spec["archive_sha256"])
+            except DownloadUnavailable:
+                file_id = DOWNLOADS.get("checkpoint_fallbacks", {}).get(f"{dataset}/{model}/{run}")
+                if not file_id:
+                    raise
+                _download_fallback(path, file_id, child["checkpoint_sha256"])
+            else:
+                with zipfile.ZipFile(archive) as handle:
+                    data = handle.read(child["member"])
+                require(hashlib.sha256(data).hexdigest() == child["checkpoint_sha256"],
+                        "Unexpected OpenOOD checkpoint member")
+                temp = path.with_suffix(".part")
+                temp.write_bytes(data)
+                os.replace(temp, path)
         return checked(path, child["checkpoint_sha256"]), child["checkpoint_sha256"]
     spec = spec.get("source", spec)
     path = root / spec["filename"]

@@ -24,6 +24,10 @@ PUBLIC_MIRRORS = {key: (value["sha256"], value["url"])
                   for key, value in DOWNLOADS["drive_mirrors"].items()}
 
 
+class DownloadUnavailable(RuntimeError):
+    """The public provider could not deliver a requested file."""
+
+
 def _download_mirror(path, url, digest):
     from tqdm.auto import tqdm
 
@@ -76,7 +80,7 @@ def download_drive(path, file_id, digest):
                         require(digest == mirror[0], "Mirror does not match the requested archive identity")
                         return _download_mirror(path, mirror[1], digest)
                 if quota:
-                    raise RuntimeError(
+                    raise DownloadUnavailable(
                         f"OpenOOD's public download quota is exhausted for {path.name}. "
                         "Immediate retries will not help. Wait for the provider to reset it, "
                         "then rerun the download cell. No verified public mirror is "
@@ -84,7 +88,7 @@ def download_drive(path, file_id, digest):
                         f"Source: https://drive.google.com/file/d/{file_id}/view"
                     ) from exc
                 if attempt == 2:
-                    raise RuntimeError(
+                    raise DownloadUnavailable(
                         f"Cannot download {path.name} from OpenOOD's public release. "
                         f"Source: https://drive.google.com/file/d/{file_id}/view. "
                         "Rerun the download cell after the public source becomes available. "

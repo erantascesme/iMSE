@@ -210,7 +210,7 @@ No personal Google Drive files or previously saved experiment outputs are requir
 
 If an OpenOOD dataset download is unavailable, the downloader uses checksum-verified TorchUncertainty Hugging Face mirrors. The seven CIFAR archive hashes match the original experiment. Source revisions, archive identities, and public fallback URLs are pinned in `imse_benchmark/assets/downloads.json`.
 
-The review ZIP includes the six original OpenOOD ResNet18 checkpoint files under `checkpoints/`. They are checked against the existing SHA-256 identities and used automatically. A source-only copy without these files uses OpenOOD's official checkpoint links, whose availability is subject to the provider's quota. No author-hosted download links are used. Other checkpoints and datasets download automatically from their public providers. Dataset and checkpoint ownership and usage terms remain with the original providers.
+The review ZIP contains source code and split manifests, without model weights or datasets. ResNet18 checkpoints are downloaded from OpenOOD's official links and checked against the original SHA-256 identities. These links are subject to the provider's download quota. Optional public fallback file IDs can be configured in `checkpoint_fallbacks` in `imse_benchmark/assets/downloads.json`, using keys of the form `CIFAR10/ResNet18/s0`. A fallback is attempted only when the official download is unavailable and must match the original checkpoint hash. No fallback is configured in this review package. Other models and datasets retain their public download sources. Dataset and checkpoint ownership and usage terms remain with the original providers.
 
 | Data | Download source |
 |---|---|
@@ -230,7 +230,6 @@ README.md
 Reproduce.ipynb
 Reproduce_Colab.ipynb
 pyproject.toml
-checkpoints/          # Original OpenOOD weights included in the review ZIP only
 imse_benchmark/
 ├── config.py          # Detector settings and validation grids
 ├── datasets/          # Downloads, image loading, and benchmark splits
